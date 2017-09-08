@@ -20,6 +20,7 @@
     <jsp:include page="../layout1/top.jsp" flush="true"/>
     <jsp:include page="../layout1/bottom.jsp" flush="true"/>
     <div data-options="region:'west',title:'功能菜单',split:true" style="width:200px;">fdf</div>
+
     <div data-options="region:'center'" style="padding:5px;background:#eee;">df</div>
 </div>
 
