@@ -1,0 +1,28 @@
+/* 去除间隙,设置字体大小和字体颜色 */
+@charset "UTF-8";
+body{background:#FFF}
+body,input,button,select,textarea{font:13px/1.5 "微软雅黑","Tahoma",'Microsoft Yahei','Simsun';color:#444;}
+textarea{resize:none;}
+body,ul,ol,li,dl,dd,p,h1,h2,h3,h4,h5,h6,form,fieldset,.pr,.pc{padding:0;margin:0;}
+table{empty-cells:show;border-collapse:collapse;}
+caption,th{text-align:left;font-weight:400;}
+ul li,.xl li{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:1em;}
+em,cite,i{font-style:normal;}
+a{color:#333;text-decoration:none;}
+a:hover{text-decoration:none;}
+a img{border:none;}
+label{cursor:pointer;}
+
+.clr{clear:both;}
+.base{background-color:#fff}
+.footer{
+    background:url(../images/foot.jpg) repeat-x;
+    color: #222;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
