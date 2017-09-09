@@ -2,6 +2,7 @@
 <div class="easyui-tabs" data-options="border:false" style="width:100%;height:100%;">
         <div title="我的桌面" style="display:none;background: #FFffff;">
                 <div id="ind_right" style="width: 98%">
+
                         <div style="width: 98%">&nbsp;&nbsp;&nbsp;&nbsp;</div>
                         <div class="ind_right_title" style="width: 98%"><strong style='border-bottom: 3px solid rgb(255, 116, 0);font-size:14px'>我的中心</strong></div>
                         <div class="ind_right_box" style="width: 98%">
