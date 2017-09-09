@@ -89,26 +89,24 @@
 
     }
 </style>
-<div data-options="region:'north'" style="height:100px;">
-    <div class="header header-bg">
-        <div class="header-logo"><img src="${pageContext.request.contextPath}/zcp/common/images/logo.png"/></div>
-        <div class="header-right">
-            <div class="header-rigth-fa">
-                <a href="#" target="_self" onclick="window.external.AddFavorite(location.href, document.title);" class="header-right-fa-a" style="padding-left:0px">收藏本站</a> <i class="header-feige">&nbsp;&nbsp;&nbsp;</i>
+<div class="header header-bg">
+    <div class="header-logo"><img src="${pageContext.request.contextPath}/zcp/common/images/logo.png"/></div>
+    <div class="header-right">
+        <div class="header-rigth-fa">
+            <a href="#" target="_self" onclick="window.external.AddFavorite(location.href, document.title);" class="header-right-fa-a" style="padding-left:0px">收藏本站</a> <i class="header-feige">&nbsp;&nbsp;&nbsp;</i>
 
-                <a href="#" onclick="refresh();"  target="_self" class="header-right-fa-a">刷新</a> <i class="header-feige">&nbsp;&nbsp;&nbsp;</i>
+            <a href="#" onclick="refresh();"  target="_self" class="header-right-fa-a">刷新</a> <i class="header-feige">&nbsp;&nbsp;&nbsp;</i>
 
-                <a  href="javascript:void(0);" target="_self"  onclick="y('${pageContext.request.contextPath}/afw/system/pwdModify.jsp')"  class="header-right-fa-a">更改密码</a> <i class="header-feige">&nbsp;&nbsp;&nbsp;</i>
+            <a  href="javascript:void(0);" target="_self"  onclick="y('${pageContext.request.contextPath}/afw/system/pwdModify.jsp')"  class="header-right-fa-a">更改密码</a> <i class="header-feige">&nbsp;&nbsp;&nbsp;</i>
 
-                <a href="${pageContext.request.contextPath}/loginAction!logout.action" target="_self" class="header-right-fa-a">退出</a>
-            </div>
-            <div class="header-right-wel">
-                <div class="header-right-wel-img"><img src="${pageContext.request.contextPath}/zcp/common/images/touxiang.png"/></div>
-
-                <div class="header-right-wel-i">${_sysUser_.userNo}</div>
-                <div class="header-right-wel-ir">欢迎来到本系统！.当前版本:V1.0.0</div>
-            </div>
+            <a href="${pageContext.request.contextPath}/loginAction!logout.action" target="_self" class="header-right-fa-a">退出</a>
         </div>
-        <div class="clr"></div>
+        <div class="header-right-wel">
+            <div class="header-right-wel-img"><img src="${pageContext.request.contextPath}/zcp/common/images/touxiang.png"/></div>
+
+            <div class="header-right-wel-i">${_sysUser_.userNo}</div>
+            <div class="header-right-wel-ir">欢迎来到本系统！.当前版本:V1.0.0</div>
+        </div>
     </div>
+    <div class="clr"></div>
 </div>

@@ -16,11 +16,23 @@ label{cursor:pointer;}
 
 .clr{clear:both;}
 .base{background-color:#fff}
+/*
 .footer{
     background:url(../images/foot.jpg) repeat-x;
     color: #222;
     font-size: 12px;
     height: 28px;
+    line-height: 28px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}*/
+
+.footer{
+    background:url(../images/foot.jpg) repeat-x;
+    color: #222;
+    font-size: 12px;
+    height: 30px;
     line-height: 28px;
     margin: 0 auto;
     text-align: center;
