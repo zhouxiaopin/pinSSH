@@ -18,19 +18,19 @@
 <body id="container" class="easyui-layout" >
     <%-- 顶部 --%>
     <div data-options="region:'north'" style="height:100px;">
-        <jsp:include page="../layout1/top.jsp" flush="true"/>
+        <jsp:include page="../treeMenu/top.jsp" flush="true"/>
     </div>
     <%-- 左边 --%>
     <div data-options="region:'west',title:'功能菜单',split:true" style="width:200px;">
-        <jsp:include page="../layout1/left.jsp" flush="true"/>
+        <jsp:include page="../treeMenu/left.jsp" flush="true"/>
     </div>
     <%-- 中间 --%>
     <div data-options="region:'center'" style="background:#eee;width:100%">
-        <jsp:include page="../layout1/main.jsp" flush="true"/>
+        <jsp:include page="../treeMenu/main.jsp" flush="true"/>
     </div>
     <%--底部--%>
     <div data-options="region:'south'">
-        <jsp:include page="../layout1/bottom.jsp" flush="true"/>
+        <jsp:include page="../treeMenu/bottom.jsp" flush="true"/>
     </div>
 </body>
 </html>
