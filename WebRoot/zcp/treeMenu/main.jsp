@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="easyui-tabs" data-options="border:false" style="width:100%;height:100%;">
         <div title="我的桌面" style="display:none;background: #FFffff;">
                 <jsp:include page="../common/jsp/myDesktop.jsp" flush="true"/>
@@ -32,5 +32,20 @@
         pageSize : 10,
         pageList : [10,20,30,40,50],
         fit:true
+    });
+
+    $.ajax({
+        url: "${pageContext.request.contextPath}/department/list.action",
+        type: 'POST',
+        dataType: 'JSON',
+        contentType: "application/json",
+        error: function(request) {
+            alert(JSON.stringify(request));
+            alert("出错了，请稍候再试");
+        },
+        success: function (data) {
+            alert(JSON.stringify(data));
+
+        }
     });
 </script>

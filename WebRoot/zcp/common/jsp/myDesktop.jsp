@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="ind_right" style="width: 98%">
     <div style="width: 98%">&nbsp;&nbsp;&nbsp;&nbsp;</div>
     <div class="ind_right_title" style="width: 98%"><strong style='border-bottom: 3px solid rgb(255, 116, 0);font-size:14px'>我的中心</strong></div>
