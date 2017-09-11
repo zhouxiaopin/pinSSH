@@ -26,7 +26,7 @@
 	<!--<bean id="adminService" class="com.huazhiyu.admin.service.impl.AdminService"/>-->
 	<!--&lt;!&ndash; 后台会员管理的service &ndash;&gt;-->
 	<!--<bean id="userService" class="com.huazhiyu.user.service.impl.UserService"/>-->
-	<bean id="IDepartmentService" class="com.gzticc.hz.service.impl.DepartmentServiceImpl"/>
+	<bean id="departmentService" class="com.gzticc.hz.service.impl.DepartmentServiceImpl"/>
 	
 	
 </beans>
