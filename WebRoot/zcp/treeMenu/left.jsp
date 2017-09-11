@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <div id="aa" class="easyui-accordion" data-options="border:false" style="width:100%;height:100%;">
-    <div title="Title1" data-options="selected:true" style="padding:10px;">
+    <div title="Title1" data-options="selected:true">
         <ul id="tt"></ul>
     </div>
 </div>
