@@ -3,7 +3,7 @@
         <div title="我的桌面" style="display:none;background: #FFffff;">
                 <jsp:include page="../common/jsp/myDesktop.jsp" flush="true"/>
         </div>
-        <div title="Tab2" data-options="closable:true,fit:true" style="padding-bottom:20px;">
+        <div title="Tab2" data-options="closable:true,fit:true" style="padding:20px;">
                 <div>收拾
                 </div>
                 <table id="dg" style="width:100%"></table>
