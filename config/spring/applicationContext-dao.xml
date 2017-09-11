@@ -45,7 +45,7 @@
 			com.huazhiyu.authority.mapper,com.huazhiyu.admin.mapper,
 			com.huazhiyu.user.mapper">
 		</property>-->
-		<property name="basePackage" value="cn.gzticc.ghyp.course.mapper">
+		<property name="basePackage" value="com.gzticc.hz.mapper.DepartmentMapper">
 		</property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>

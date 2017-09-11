@@ -20,7 +20,7 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<!-- 
 			数据源:
-			dataSource在applicationContext-dao.xml中配置了
+			dataSource在applicationContmapper-dao.xml中配置了
 		 -->
 		<property name="dataSource" ref="dataSource"/>
 </bean>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huazhiyu.product.mapper.ProductMapper" >
+
+	<!-- 查询商品的条件的sql片段 -->
+	<sql id="query_product">
+		<if test="productCustom!=null">
+			<!-- ${}拼接字符串，有sql注入的维修，少用 -->
+			<if test="productCustom.name!=null and productCustom.name !=''">
+				and name like '%${productCustom.name}%'
+			</if>
+			<if test="productCustom.id!=null">
+				and id = #{productCustom.id}
+			</if>
+			<if test="productCustom.status!=null">
+				and status = #{productCustom.status}
+			</if>
+			<if test="productCustom.cid!=null">
+				and cid = #{productCustom.cid}
+			</if>
+			
+		</if>
+	</sql>
+	
+	<!-- 查询商品 -->
+	<!-- 
+		parameterType传入包装对象(包装了查询条件)
+  		resultType建议使用扩展对象
+  	 -->
+	<select id="findProduct" parameterType="productQueryVo" resultType="productCustom">
+		select product_info.* from product_info
+		<where>
+			<!-- 引用sql片段 的id，如果refid指定的id不在本mapper文件中，需要前边加namespace -->
+			<include refid="query_product"></include>
+		</where>
+		order by pdate desc
+		<if test="begin != null and limit != null">
+			 limit #{begin},#{limit}
+		</if>
+	</select>
+	
+	<!-- 查询商品数量 -->
+	<select id="findProductCount" parameterType="productQueryVo" resultType="int">
+		select count(*) from product_info
+		<where>
+			<!-- 引用sql片段 的id，如果refid指定的id不在本mapper文件中，需要前边加namespace -->
+			<include refid="query_product"></include>
+		</where>
+	</select>
+	
+	<!-- 添加商品 -->
+	<insert id="addProduct" parameterType="product">
+		insert into 
+			product_info(
+				name,
+				code,
+				brand,
+				picture,
+				number,
+				price,
+				discountPrice,
+				introduction,
+				isHot,
+				status,
+				pdate,
+				cid
+			) 
+			values(
+				#{name},
+				#{code},
+				#{brand},
+				#{picture},
+				#{number},
+				#{price},
+				#{discountPrice},
+				#{introduction},
+				#{isHot},
+				#{status},
+				#{pdate},
+				#{cid}
+			)
+	</insert>
+	
+	<!-- 更新商品 -->
+	<update id="updateProduct" parameterType="product">
+		update product_info 
+			set 
+				name = #{name},
+				code = #{code},
+				brand = #{brand},
+				picture = #{picture},
+				number = #{number},
+				price = #{price},
+				discountPrice = #{discountPrice},
+				introduction = #{introduction},
+				isHot = #{isHot},
+				status = #{status},
+				pdate = #{pdate},
+				cid = #{cid}
+		where id = #{id}
+	</update>
+	
+	<!-- 删除商品 -->
+	<delete id="deleteProduct" parameterType="Integer">
+		delete from product_info where id = #{value}
+	</delete>
+
+
+</mapper>

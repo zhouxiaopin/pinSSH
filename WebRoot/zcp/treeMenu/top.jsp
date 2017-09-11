@@ -6,7 +6,7 @@
         width:auto;
     }
     .header-bg{
-        background:url("${pageContext.request.contextPath}/zcp/common/images/header_top_v.jpg");
+        background:url("${pageContext.request.contextPath}/zcp/com.gzticc.common/images/header_top_v.jpg");
         filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
         -moz-background-size:100% 100%;
         background-size:100% 100%;
