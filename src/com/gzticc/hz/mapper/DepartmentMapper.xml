@@ -7,7 +7,10 @@
 		<if test="departmentCustom!=null">
 			<!-- ${}拼接字符串，有sql注入的维修，少用 -->
 			<if test="departmentCustom.departmentName!=null and departmentCustom.departmentName !=''">
-				and name like '%${departmentCustom.departmentName}%'
+				and departmentName like concat('%',#{departmentCustom.departmentName},'%')
+			</if>
+			<if test="departmentCustom.departmentNo!=null and departmentCustom.departmentNo !=''">
+				and departmentNo like concat('%',#{departmentCustom.departmentNo},'%')
 			</if>
 		</if>
 	</sql>
@@ -18,7 +21,7 @@
   		resultType建议使用扩展对象
   	 -->
 	<select id="queryDepartment" parameterType="departmentQueryVo" resultType="departmentCustom">
-		select d.* from tb_department d
+		SELECT tb_department.* FROM tb_department
 		<where>
 			<!-- 引用sql片段 的id,如果refid指定的id不在本mapper文件中,要前边加namespace -->
 			<include refid="query_department"></include>
