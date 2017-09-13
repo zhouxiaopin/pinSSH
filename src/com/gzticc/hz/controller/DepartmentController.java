@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 /**
  * 部门信息控制器
  * Created by Administrator on 2017/9/11.
@@ -26,9 +24,7 @@ public class DepartmentController {
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     @ResponseBody
     public DatagridResult<DepartmentCustom> list(DepartmentQueryVo departmentQueryVo) throws Exception{
-        List<DepartmentCustom> departments = departmentService.queryDepartment(departmentQueryVo);
-        DatagridResult<DepartmentCustom> datagridResult = new DatagridResult<>();
-        datagridResult.setRows(departments);
+        DatagridResult<DepartmentCustom> datagridResult = departmentService.queryObjs(departmentQueryVo);
         return datagridResult;
 
     }

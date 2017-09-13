@@ -20,12 +20,22 @@
 		parameterType传入包装对象(包装了查询条件)
   		resultType建议使用扩展对象
   	 -->
-	<select id="queryDepartment" parameterType="departmentQueryVo" resultType="departmentCustom">
+	<select id="queryPageList" parameterType="departmentQueryVo" resultType="departmentCustom">
 		SELECT tb_department.* FROM tb_department
 		<where>
 			<!-- 引用sql片段 的id,如果refid指定的id不在本mapper文件中,要前边加namespace -->
 			<include refid="query_department"></include>
 		</where>
+		<if test="start!=null and rows!=null">
+			limit #{start},#{rows}
+		</if>
 
+	</select>
+
+	<select id="queryCount" parameterType="departmentQueryVo" resultType="Long">
+		SELECT count(1) FROM tb_department
+		<where>
+			<include refid="query_department"></include>
+		</where>
 	</select>
 </mapper>
