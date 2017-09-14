@@ -77,7 +77,7 @@
                     </tr>
                     <tr>
                         <th><label >创建时间:</label></th>
-                        <td><input name="createTime" class="easyui-validatebox" type="text" data-options="validType:'time'" /></td>
+                        <td><input name="createTime" value="${obj.createTime}" class="easyui-datetimebox" type="text" data-options="" /></td>
                     </tr>
                 </c:when>
             </c:choose>
@@ -91,8 +91,16 @@
     </table>
 </form>
 <script type="text/javascript">
-
     $(function () {
+        $('#department').form('load',{
+            departmentId:${obj.departmentId},
+            departmentNo:${obj.departmentNo},
+            departmentName:${obj.departmentName},
+            departmentPhone:${obj.departmentPhone},
+            status:${obj.status},
+            createTime:'<fmt:formatDate value="${obj.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>'
+        });
+
         $('#department').form({
             url:'${pageContext.request.contextPath}/department/${oprt}.action',
             onSubmit: function(param){

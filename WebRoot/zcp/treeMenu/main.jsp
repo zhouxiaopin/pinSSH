@@ -156,12 +156,28 @@
             },'-',{
                 iconCls: 'icon-remove',
                 text: '删除',
-                handler: function(){$.messager.alert('提示','删除按钮','info');}
+                handler: function(){
+                    $.messager.confirm('提示','你确定要删除吗？',function (val) {
+                        if (!val){
+                            return;
+                        }
+
+                    });
+                }
             },'-',{
                 iconCls: 'icon-search',
                 text: '查看',
                 handler: function(){
 //                    $.messager.alert('提示','查看按钮','info');
+                    var rows = $("#dg").datagrid('getChecked');
+                    var len = rows.length;
+                    if (0 >= len){
+                        $.messager.alert('提示','请选择一行','info');
+                        return;
+                    }else if(2 <= len){
+                        $.messager.alert('提示','只能选择一行','info');
+                        return;
+                    }
                     $('#dialog').dialog({
                         title: '查看',
                         width: 600,
@@ -173,6 +189,9 @@
                         maximizable:true,
                         href: '${pageContext.request.contextPath}/department/queryDesc.action',
                         modal: true,
+                        queryParams: {
+                            'id':$("#dg").datagrid('getChecked')[0].departmentId
+                        },
                         onClose:function () {
                             $('#dg').datagrid('reload');
                         }

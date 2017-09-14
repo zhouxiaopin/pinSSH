@@ -4,6 +4,7 @@ import com.gzticc.common.exception.SysException;
 import com.gzticc.common.pojo.BaseResult;
 import com.gzticc.common.pojo.DatagridResult;
 import com.gzticc.common.utils.BaseConstant;
+import com.gzticc.common.utils.GsonUtils;
 import com.gzticc.hz.pojo.DepartmentCustom;
 import com.gzticc.hz.pojo.DepartmentQueryVo;
 import com.gzticc.hz.service.IDepartmentService;
@@ -13,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Date;
 
 /**
  * 部门信息控制器
@@ -66,6 +69,7 @@ public class DepartmentController {
     public BaseResult add(Model model, DepartmentCustom departmentCustom){
         BaseResult baseResult = new BaseResult();
         try {
+            departmentCustom.setCreateTime(new Date());
             baseResult = departmentService.insert(departmentCustom);
         }catch (Exception e){
             baseResult.setCode(BaseConstant.EXCEPTION_CODE);
@@ -100,7 +104,8 @@ public class DepartmentController {
         try {
             DepartmentCustom departmentCustom = getObj(id);
             if(null != departmentCustom) {
-                model.addAttribute("obj","departmentCustom");
+                model.addAttribute("obj",departmentCustom);
+                model.addAttribute("jsonObj", GsonUtils.objToJsonStr(departmentCustom));
                 model.addAttribute("retMsg",BaseConstant.SUCCESS_MSG);
             }else{
                 model.addAttribute("retMsg",BaseConstant.FAIL_MSG);
