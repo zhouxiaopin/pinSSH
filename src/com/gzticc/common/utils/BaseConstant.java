@@ -1,4 +1,4 @@
-package com.gzticc.common.base.utils;
+package com.gzticc.common.utils;
 
 /**
  * Created by Administrator on 2017/9/12.
@@ -9,6 +9,7 @@ public interface BaseConstant {
     int SUCCESS_CODE = 0;
     int FAIL_CODE = -1;
     int FALL_NOT_AUTH = -2;
+    int EXCEPTION_CODE = -3;
     int ADD_SUCCESS_CODE = 1;
     int DEL_SUCCESS_CODE = 2;
     int MDF_SUCCESS_CODE = 3;
@@ -36,6 +37,8 @@ public interface BaseConstant {
 
     String RECORD_EXISTS_YES_MSG = "记录已存在";
     String RECORD_EXISTS_NO_MSG = "记录不存在";
+
+    String EXCEPTION__MSG = "系统繁忙,请稍后再试";
 
     /**************默认分页查询的条数****************/
     int DEFAULT_PAGE_COUNT = 10;

@@ -45,7 +45,7 @@
 			com.huazhiyu.authority.mapper,com.huazhiyu.admin.mapper,
 			com.huazhiyu.user.mapper">
 		</property>-->
-		<property name="basePackage" value="com.gzticc.hz.mapper">
+		<property name="basePackage" value="com.gzticc.common.mapper,com.gzticc.hz.mapper">
 		</property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>

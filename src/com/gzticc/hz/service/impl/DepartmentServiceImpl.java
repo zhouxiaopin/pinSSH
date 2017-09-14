@@ -8,12 +8,14 @@ import com.gzticc.hz.pojo.DepartmentCustom;
 import com.gzticc.hz.pojo.DepartmentQueryVo;
 import com.gzticc.hz.service.IDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * 商品模块的业务逻辑实现类
  * @author pin
  *
  */
+@Service()
 public class DepartmentServiceImpl extends BaseMyBatisServiceImpl<DepartmentCustom,DepartmentQueryVo>
 		implements IDepartmentService {
 	

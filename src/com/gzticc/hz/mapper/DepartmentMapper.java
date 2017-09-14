@@ -1,6 +1,6 @@
 package com.gzticc.hz.mapper;
 
-import com.gzticc.common.base.mapper.BaseMapper;
+import com.gzticc.common.mapper.BaseMapper;
 import com.gzticc.hz.pojo.DepartmentCustom;
 import com.gzticc.hz.pojo.DepartmentQueryVo;
 /**

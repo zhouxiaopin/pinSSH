@@ -1,4 +1,4 @@
-package com.gzticc.common.base.pojo;
+package com.gzticc.common.pojo;
 
 /**
  * Created by Administrator on 2017/9/13.

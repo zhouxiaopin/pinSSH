@@ -1,4 +1,4 @@
-package com.gzticc.common.base.mapper;
+package com.gzticc.common.mapper;
 
 import java.util.List;
 
@@ -20,10 +20,10 @@ public interface BaseMapper<T,V> {
     public int deleteList(String [] pks);
 
     //查询单个对象
-    public T queryObj(V entityVo);
+    public T queryObj(String pk);
 
     //分页查询数据列表
-    public List<T> queryPageList(V entityQueryVo);
+    public List<T> queryObjs(V entityQueryVo);
 
     //分页查询，返回总记录数
     public Long queryCount(V entityQueryVo);
