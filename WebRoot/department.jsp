@@ -121,7 +121,7 @@
                 return isValid;	// 返回false终止表单提交
             },
             success:function(data){
-//                data = JSON.parse(data);
+                data = JSON.parse(data);
                 $('#retMsg').html(data.msg);
 //                if(true === data.status){
 //                    $.messager.alert('提示',data.msg,'info');
