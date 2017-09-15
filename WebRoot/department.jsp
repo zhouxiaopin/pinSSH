@@ -103,8 +103,10 @@
         <%--});--%>
 
         if("${oprt }" == "queryDetail"){
-            $(":input").attr("disabled",true);
-            $("a").attr("disabled",true);
+            $("#department").find(":input").attr("disabled",true);
+            $("#department").find("a").attr("disabled",true);
+//            $(":input").attr("disabled",true);
+//            $("a").attr("disabled",true);
         }
 
         $('#department').form({

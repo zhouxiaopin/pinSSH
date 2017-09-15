@@ -14,23 +14,16 @@
                         <span>本次历时:</span>
                         <input type="text" disabled="disabled" value=<%=request.getAttribute("duration")%>>
                 </div>--%>
-              <form id="searchForm" method="post" style="width:100%;min-width:1024px;height: auto;min-height: 100px;">
+              <div style="width:100%;min-width:1024px;height: auto;min-height: 100px;">
                       <fieldset style="min-height:80px;border-color: #AED0EA;border-radius:5px;padding: 10px;display: block;">
                               <legend style="margin-left: 10px">信息查询</legend>
-                             <%-- <select id="cc" class="easyui-combobox" name="dept" style="width:200px;">
-                                      <option value="aa">aitem1</option>
-                                      <option>bitem2</option>
-                                      <option>bitem3</option>
-                                      <option>ditem4</option>
-                                      <option>eitem5</option>
-                              </select>--%>
-                              部门编号:&nbsp;<input type="text" name="departmentNo" class="easyui-textbox" />&nbsp;
-                              部门名称:&nbsp;<input type="text" name="departmentName" class="easyui-textbox" />
+                              部门编号:&nbsp;<input id="departmentNo" class="easyui-textbox" />&nbsp;
+                              部门名称:&nbsp;<input id="departmentName" class="easyui-textbox" />
 
 
-                              <a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+                              <a id="serachBtn" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
                       </fieldset>
-              </form>
+              </div>
               <div id="dataInfo" style="width:100%;min-width:1024px;height: auto;">
                       <div id="dialog"></div>
                       <table id="dg" >
@@ -52,20 +45,13 @@
         return ($("#dataInfo").width()) * percent ;
     }
     $(function () {
+        $('#serachBtn').on('click',function () {
+            $('#dg').datagrid('load',{
+                'departmentCustom.departmentNo': $('#departmentNo').val(),
+                'departmentCustom.departmentName': $('#departmentName').val()
+            });
 
-        $('#searchForm').form({
-            url:'${pageContext.request.contextPath}/department/list.action?time=' + new Date().getTime(),
-            onSubmit: function(param){
-                var isValid = $(this).form('validate');
-                if (!isValid){
-                    $.messager.alert('提示','输入格式不正确','info');
-                }
-                return isValid;	// 返回false终止表单提交
-            },
-            success:function(data){
-                data = JSON.parse(data);
-                $('#dg').datagrid("data",data);
-            }
+
         });
 
         var browser = zcp.getBrowser();
