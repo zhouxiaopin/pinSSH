@@ -19,65 +19,66 @@
     <table style="margin: 0 auto;">
         <tbody>
         <td colspan="2">
-            <input name="departmentId" type="hidden"/>
+            <label id="retMsg" style="display:block;text-align: center;color: #FF0000">${retMsg}</label>
+            <input name="departmentId" value="${obj.departmentId}" type="hidden"/>
         </td>
             <c:choose>
                 <c:when test="${oprt == 'add'}">
                     <tr>
                         <th><label>部门编号:</label></th>
-                        <td> <input name="departmentNo" class="easyui-validatebox" type="text" data-options="required:true" /></td>
+                        <td> <input name="departmentNo" missingMessage="部门编号不能为空" value="${obj.departmentNo}" class="easyui-textbox easyui-validatebox" type="text" data-options="required:true" /></td>
                     </tr>
                     <tr>
                         <th><label >部门名称:</label></th>
-                        <td><input name="departmentName" class="easyui-validatebox" type="text"/></td>
+                        <td><input name="departmentName" value="${obj.departmentName}" class="easyui-textbox easyui-validatebox" type="text"/></td>
                     </tr>
                     <tr>
                         <th><label>部门电话:</label></th>
-                        <td><input name="departmentPhone" class="easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
+                        <td><input name="departmentPhone" value="${obj.departmentPhone}" class="easyui-numberbox easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
                     </tr>
                     <tr>
                         <th><label>部门状态:</label></th>
-                        <td><input name="status" class="easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
+                        <td><input name="status" value="${obj.status}" class="easyui-textbox easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
                     </tr>
                 </c:when>
                 <c:when test="${oprt == 'update'}">
                     <tr>
                         <th><label >部门编号:</label></th>
-                        <td> <input name="departmentNo" class="easyui-validatebox" type="text" data-options="required:true" /></td>
+                        <td> <input name="departmentNo" value="${obj.departmentNo}" class="easyui-textbox easyui-validatebox" type="text" data-options="required:true" /></td>
                     </tr>
                     <tr>
                         <th><label >部门名称:</label></th>
-                        <td><input name="departmentName" class="easyui-validatebox" type="text"/></td>
+                        <td><input name="departmentName" value="${obj.departmentName}" class="easyui-validatebox" type="text"/></td>
                     </tr>
                     <tr>
                         <th><label >部门电话:</label></th>
-                        <td><input name="departmentPhone" class="easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
+                        <td><input name="departmentPhone" value="${obj.departmentPhone}" class="easyui-numberbox easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
                     </tr>
                     <tr>
                         <th><label >部门状态:</label></th>
-                        <td><input name="status" class="easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
+                        <td><input name="status" value="${obj.status}" class="easyui-textbox easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
                     </tr>
                 </c:when>
-                <c:when test="${oprt == 'queryDesc'}">
+                <c:when test="${oprt == 'queryDetail'}">
                     <tr>
                         <th><label >部门编号:</label></th>
-                        <td> <input name="departmentNo" class="easyui-validatebox" type="text" data-options="required:true" /></td>
+                        <td> <input name="departmentNo" value="${obj.departmentNo}" class="easyui-textbox easyui-validatebox" type="text" data-options="required:true" /></td>
                     </tr>
                     <tr>
                         <th><label >部门名称:</label></th>
-                        <td><input name="departmentName" class="easyui-validatebox" type="text"/></td>
+                        <td><input name="departmentName" value="${obj.departmentName}" class="easyui-textbox easyui-validatebox" type="text"/></td>
                     </tr>
                     <tr>
                         <th><label >部门电话:</label></th>
-                        <td><input name="departmentPhone" class="easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
+                        <td><input name="departmentPhone" value="${obj.departmentPhone}" class="easyui-numberbox easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
                     </tr>
                     <tr>
                         <th><label >部门状态:</label></th>
-                        <td><input name="status" class="easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
+                        <td><input name="status" value="${obj.status}" class="easyui-textbox easyui-validatebox" type="text" data-options="validType:'phone'" /></td>
                     </tr>
                     <tr>
                         <th><label >创建时间:</label></th>
-                        <td><input name="createTime" value="${obj.createTime}" class="easyui-datetimebox" type="text" data-options="" /></td>
+                        <td><input name="createTime" value="<fmt:formatDate value="${obj.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" class="easyui-datetimebox" type="text" data-options="" /></td>
                     </tr>
                 </c:when>
             </c:choose>
@@ -92,14 +93,19 @@
 </form>
 <script type="text/javascript">
     $(function () {
-        $('#department').form('load',{
-            departmentId:${obj.departmentId},
-            departmentNo:${obj.departmentNo},
-            departmentName:${obj.departmentName},
-            departmentPhone:${obj.departmentPhone},
-            status:${obj.status},
-            createTime:'<fmt:formatDate value="${obj.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>'
-        });
+        <%--$('#department').form('load',{--%>
+            <%--departmentId:${obj.departmentId},--%>
+            <%--departmentNo:${obj.departmentNo},--%>
+            <%--departmentName:${obj.departmentName},--%>
+            <%--departmentPhone:${obj.departmentPhone},--%>
+            <%--status:${obj.status},--%>
+            <%--createTime:'<fmt:formatDate value="${obj.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>'--%>
+        <%--});--%>
+
+        if("${oprt }" == "queryDetail"){
+            $(":input").attr("disabled",true);
+            $("a").attr("disabled",true);
+        }
 
         $('#department').form({
             url:'${pageContext.request.contextPath}/department/${oprt}.action',
@@ -110,26 +116,32 @@
                 var isValid = $(this).form('validate');
                 if (!isValid){
 //                    $.messager.progress('close');	// 如果表单是无效的则隐藏进度条
+                    $('#retMsg').html("表单校验不通过");
                 }
                 return isValid;	// 返回false终止表单提交
             },
             success:function(data){
-                data = JSON.parse(data);
-                if(true === data.status){
-                    $.messager.alert('提示',data.msg,'info');
-                }else {
-                    $.messager.alert('提示',data.msg,'error');
-                }
+//                data = JSON.parse(data);
+                $('#retMsg').html(data.msg);
+//                if(true === data.status){
+//                    $.messager.alert('提示',data.msg,'info');
+//                }else {
+//                    $.messager.alert('提示',data.msg,'error');
+//                }
 
                 //alert(data);
 //                $.messager.progress('close');	// 如果提交成功则隐藏进度条
             }
         });
         $('#submitForm').on('click',function () {
-            $('#department').form('submit');
+            if ($(this).linkbutton('options').disabled == false) {
+                $('#department').form('submit');
+            }
         });
         $('#resetForm').on('click',function () {
-            $('#department').form('reset');
+            if ($(this).linkbutton('options').disabled == false) {
+                $('#department').form('reset');
+            }
         });
 
     });

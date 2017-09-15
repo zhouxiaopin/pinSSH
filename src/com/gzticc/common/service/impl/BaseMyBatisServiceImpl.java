@@ -57,11 +57,14 @@ public class BaseMyBatisServiceImpl<T,V> implements IBaseMyBatisService<T,V> {
 
     @Override
     public BaseResult delete(T entityCustom){
-        BaseResult baseResult = new BaseResult();
+        BaseResult baseResult = null;
         try {
             int flag = baseMapper.delete(entityCustom);
             baseResult = deleteAfter(flag);
         }catch (Exception e){
+            if(null == baseResult) {
+                baseResult = new BaseResult();
+            }
             baseResult.setCode(BaseConstant.EXCEPTION_CODE);
             baseResult.setMsg(BaseConstant.EXCEPTION__MSG);
         }
@@ -70,11 +73,14 @@ public class BaseMyBatisServiceImpl<T,V> implements IBaseMyBatisService<T,V> {
 
     @Override
     public BaseResult deleteList(String[] pks){
-        BaseResult baseResult = new BaseResult();
+        BaseResult baseResult = null;
         try {
             int flag = baseMapper.deleteList(pks);
             baseResult = deleteAfter(flag);
         }catch (Exception e){
+            if(null == baseResult) {
+                baseResult = new BaseResult();
+            }
             baseResult.setCode(BaseConstant.EXCEPTION_CODE);
             baseResult.setMsg(BaseConstant.EXCEPTION__MSG);
         }

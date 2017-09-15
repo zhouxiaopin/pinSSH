@@ -7,7 +7,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/zcp/common/css/jeasyui/themes/color.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/zcp/common/css/jeasyui/themes/icon.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/zcp/common/css/basic.css" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/zcp/common/js/prototypeExpand.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/zcp/common/js/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/zcp/common/js/jeasyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/zcp/common/js/jeasyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/zcp/common/js/zcpCommon.js"></script>
 

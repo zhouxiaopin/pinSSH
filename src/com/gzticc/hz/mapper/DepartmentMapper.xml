@@ -20,26 +20,27 @@
 		parameterType传入包装对象(包装了查询条件)
   		resultType建议使用扩展对象
   	 -->
-	<select id="queryObjs" parameterType="departmentQueryVo" resultType="departmentCustom">
+	<select id="queryObjs" parameterType="DepartmentQueryVo" resultType="DepartmentCustom">
 		SELECT tb_department.* FROM tb_department
 		<where>
 			<!-- 引用sql片段 的id,如果refid指定的id不在本mapper文件中,要前边加namespace -->
 			<include refid="query_department"></include>
 		</where>
+		order by createTime desc
 		<if test="start!=null and rows!=null">
 			limit #{start},#{rows}
 		</if>
 
 	</select>
 
-	<select id="queryObj" parameterType="String" resultType="departmentCustom">
+	<select id="queryObj" parameterType="java.lang.String" resultType="DepartmentCustom">
 		SELECT tb_department.* FROM tb_department
 		<where>
 			and departmentId = #{pk}
 		</where>
 	</select>
 
-	<select id="queryCount" parameterType="departmentQueryVo" resultType="Long">
+	<select id="queryCount" parameterType="DepartmentQueryVo" resultType="java.lang.Long">
 		SELECT count(1) FROM tb_department
 		<where>
 			<include refid="query_department"></include>
@@ -47,7 +48,7 @@
 	</select>
 
 	<!--添加部门-->
-	<insert id="insert" parameterType="departmentCustom">
+	<insert id="insert" parameterType="DepartmentCustom">
 		insert into tb_department
 			(
 				departmentNo,
@@ -65,4 +66,29 @@
 				#{createTime}
 			)
 	</insert>
+
+	<!-- 修改部门 -->
+	<update id="update" parameterType="DepartmentCustom">
+		update tb_department
+		set
+			departmentNo = #{departmentNo},
+			departmentName = #{departmentName},
+			departmentPhone = #{departmentPhone},
+			status = #{status}
+		where departmentId = #{departmentId}
+	</update>
+
+	<!-- 删除部门 -->
+	<delete id="delete" parameterType="DepartmentCustom">
+		delete from tb_department where departmentId = #{departmentId}
+	</delete>
+
+	<!---->
+	<!-- 通过主键批量删除部门-->
+	<delete id="deleteList">
+		delete from tb_department where departmentId in
+		<foreach collection="array" open="(" close=")" separator="," item="pk">
+			#{pk}
+		</foreach>
+	</delete>
 </mapper>

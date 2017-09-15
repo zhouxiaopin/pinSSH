@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
@@ -43,19 +44,9 @@ public class DepartmentController {
         }
         return "/department";
     }
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String delete(Model model, String id){
-        /*model.addAttribute("oprt","update");
-        try {
-
-        }catch (Exception e){
-            model.addAttribute("retMsg",BaseConstant.FAIL_MSG);
-        }*/
-        return "/department";
-    }
-    @RequestMapping(value = "/queryDesc", method = RequestMethod.POST)
-    public String queryDesc(Model model, String id){
-        model.addAttribute("oprt","queryDesc");
+    @RequestMapping(value = "/initQueryDetail", method = RequestMethod.POST)
+    public String queryDetail(Model model, String id){
+        model.addAttribute("oprt","queryDetail");
         try {
             init(model,id);
         }catch (Exception e){
@@ -67,11 +58,57 @@ public class DepartmentController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public BaseResult add(Model model, DepartmentCustom departmentCustom){
-        BaseResult baseResult = new BaseResult();
+        BaseResult baseResult = null;
         try {
             departmentCustom.setCreateTime(new Date());
             baseResult = departmentService.insert(departmentCustom);
         }catch (Exception e){
+            if(null == baseResult) {
+                baseResult = new BaseResult();
+            }
+            baseResult.setCode(BaseConstant.EXCEPTION_CODE);
+            baseResult.setMsg(BaseConstant.EXCEPTION__MSG);
+        }
+        return baseResult;
+    }
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult update(Model model, DepartmentCustom departmentCustom){
+        BaseResult baseResult = null;
+        try {
+            DepartmentCustom obj = getObj(departmentCustom.getDepartmentId().toString());
+            obj.setDepartmentNo(departmentCustom.getDepartmentNo());
+            obj.setDepartmentName(departmentCustom.getDepartmentName());
+            obj.setDepartmentPhone(departmentCustom.getDepartmentPhone());
+            obj.setStatus(departmentCustom.getStatus());
+            baseResult = departmentService.update(obj);
+        }catch (Exception e){
+            if(null == baseResult) {
+                baseResult = new BaseResult();
+            }
+            baseResult.setCode(BaseConstant.EXCEPTION_CODE);
+            baseResult.setMsg(BaseConstant.EXCEPTION__MSG);
+        }
+        return baseResult;
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult delete(@RequestParam("ids[]") String[] ids){
+
+        BaseResult baseResult = null;
+        try {
+            int len = ids.length;
+            if(1 == len ) {
+                DepartmentCustom obj = getObj(ids[0]);
+                baseResult = departmentService.delete(obj);
+            }else{
+                baseResult = departmentService.deleteList(ids);
+            }
+        }catch (Exception e){
+            if(null == baseResult) {
+                baseResult = new BaseResult();
+            }
             baseResult.setCode(BaseConstant.EXCEPTION_CODE);
             baseResult.setMsg(BaseConstant.EXCEPTION__MSG);
         }

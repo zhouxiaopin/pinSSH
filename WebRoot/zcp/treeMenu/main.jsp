@@ -1,29 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style type="text/css">
-        #baseDiv {
-                width: 90%;
-                height: 10%;
-                position: absolute;
-                top: 8%;
-                left: 50px;
-                border-style: dashed;
-                border-width: 1px;
-                border-color: #33CCFF;
-        }
-
-        #div1 {
-                width: 100px;
-                height: 30px;
-                background: #3cf;
-                position: relative;
-                top: -15px;
-                left: 0px;
-                line-height: 30px;
-                font-size: 16px;
-                color: #FFFFFF;
-                text-align: center;
-                font-weight: bold;
-        }
 </style>
 <div class="easyui-tabs" data-options="border:false" style="width:100%;height:100%;">
         <div title="我的桌面" style="display:none;background: #FFffff;">
@@ -37,23 +14,24 @@
                         <span>本次历时:</span>
                         <input type="text" disabled="disabled" value=<%=request.getAttribute("duration")%>>
                 </div>--%>
-              <form id="ff" method="post" style="width:100%;min-width:1024px;height: auto;min-height: 100px;">
+              <form id="searchForm" method="post" style="width:100%;min-width:1024px;height: auto;min-height: 100px;">
                       <fieldset style="min-height:80px;border-color: #AED0EA;border-radius:5px;padding: 10px;display: block;">
                               <legend style="margin-left: 10px">信息查询</legend>
-                              <select id="cc" class="easyui-combobox" name="dept" style="width:200px;">
+                             <%-- <select id="cc" class="easyui-combobox" name="dept" style="width:200px;">
                                       <option value="aa">aitem1</option>
                                       <option>bitem2</option>
                                       <option>bitem3</option>
                                       <option>ditem4</option>
                                       <option>eitem5</option>
-                              </select>
-                              <input type="text" class="easyui-numberbox" value="100" data-options="min:0,precision:2"></input>
-                              <input type="text" class="easyui-numberbox" value="100" data-options="min:0,precision:2"></input>
+                              </select>--%>
+                              部门编号:&nbsp;<input type="text" name="departmentNo" class="easyui-textbox" />&nbsp;
+                              部门名称:&nbsp;<input type="text" name="departmentName" class="easyui-textbox" />
+
 
                               <a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
                       </fieldset>
               </form>
-              <div id="dataInfo" style="width:100%;min-width:1024px;height: auto;min-height:372px;">
+              <div id="dataInfo" style="width:100%;min-width:1024px;height: auto;">
                       <div id="dialog"></div>
                       <table id="dg" >
                       </table>
@@ -68,11 +46,40 @@
 <script type="text/javascript">
 //        alert($("#dataInfo").width());
 //        alert(document.body.clientWidth);
+
     function fixWidth(percent)
     {
         return ($("#dataInfo").width()) * percent ;
     }
     $(function () {
+
+        $('#searchForm').form({
+            url:'${pageContext.request.contextPath}/department/list.action?time=' + new Date().getTime(),
+            onSubmit: function(param){
+                var isValid = $(this).form('validate');
+                if (!isValid){
+                    $.messager.alert('提示','输入格式不正确','info');
+                }
+                return isValid;	// 返回false终止表单提交
+            },
+            success:function(data){
+                data = JSON.parse(data);
+                $('#dg').datagrid("data",data);
+            }
+        });
+
+        var browser = zcp.getBrowser();
+        if ("Firefox" == browser){
+            $("#dataInfo").css("min-height","372px");
+        }else if("Chrome" == browser){
+            $("#dataInfo").css("min-height","399px");
+        }else if("IE" == browser){
+            $("#dataInfo").css("min-height","415px");
+            alert("ie");
+        }else{
+            $("#dataInfo").css("min-height","350px");
+        }
+
         $("#dg").datagrid({
             url: '${pageContext.request.contextPath}/department/list.action?time=' + new Date().getTime(),
             type: 'POST',
@@ -87,17 +94,28 @@
             pageNumber : 1,
             pageSize : 10,
             pageList : [10,20,30,40,50],
-            queryParams: {
-                'departmentCustom.departmentName':''
-            },
             columns : [[
                 {field:'departmentId',title:'id',checkbox:true,width:fixWidth(0.1)},
                 {field:'departmentNo',title:'部门编号',width:fixWidth(0.1)},
                 {field:'departmentName',title:'部门名称',width:fixWidth(0.2)},
                 {field:'departmentPhone',title:'部门电话',width:fixWidth(0.2)},
                 {field:'status',title:'部门状态',width:fixWidth(0.1)},
-                {field:'createTime',title:'创建时间',width:fixWidth(0.3)}
+                {field:'createTime',title:'创建时间',width:fixWidth(0.3),
+                    formatter: function(value,row,index){
+                        if (value){
+                            var date = new Date(value).format("yyyy-MM-dd hh:mm:ss");
+                            return date;
+                        }else{
+                            return value;
+                        }
+
+                    }
+                }
             ]],
+            onLoadSuccess: function () {
+                $(this).datagrid('clearSelections');
+                $(this).datagrid('clearChecked');
+            },
             toolbar: [{
                 iconCls: 'icon-add',
                 text: '添加',
@@ -157,10 +175,24 @@
                 iconCls: 'icon-remove',
                 text: '删除',
                 handler: function(){
+                    var rows = $("#dg").datagrid('getChecked');
+                    var len = rows.length;
+                    var ids = [];
+                    for(var i = 0; i < len; i++){
+                        ids.push(rows[i].departmentId);
+                    }
                     $.messager.confirm('提示','你确定要删除吗？',function (val) {
                         if (!val){
                             return;
                         }
+                        zcp.ajaxRequest('${pageContext.request.contextPath}/department/delete.action',
+                            {'ids':ids},function (data) {
+                                if(true === data.status){
+                                    $('#dg').datagrid('reload');
+                                }else {
+                                    $.messager.alert('提示',data.msg,'error');
+                                }
+                        });
 
                     });
                 }
@@ -187,7 +219,7 @@
                         resizable:true,
                         method:'POST',
                         maximizable:true,
-                        href: '${pageContext.request.contextPath}/department/queryDesc.action',
+                        href: '${pageContext.request.contextPath}/department/initQueryDetail.action',
                         modal: true,
                         queryParams: {
                             'id':$("#dg").datagrid('getChecked')[0].departmentId
