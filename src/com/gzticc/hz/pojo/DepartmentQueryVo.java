@@ -1,7 +1,6 @@
 package com.gzticc.hz.pojo;
 
-import com.gzticc.common.pojo.DatagridPage;
-
+import com.gzticc.common.base.pojo.DatagridPage;
 /**
  * 部门实体类的包装对象
  * Created by Administrator on 2017/9/11.

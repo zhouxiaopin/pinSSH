@@ -1,4 +1,4 @@
-package com.gzticc.common.pojo;
+package com.gzticc.common.base.pojo;
 
 import java.util.Collection;
 

@@ -1,7 +1,7 @@
-package com.gzticc.common.service;
+package com.gzticc.common.base.service;
 
-import com.gzticc.common.pojo.BaseResult;
-import com.gzticc.common.pojo.DatagridResult;
+import com.gzticc.common.base.pojo.BaseResult;
+import com.gzticc.common.base.pojo.DatagridResult;
 
 /**
  * Created by Administrator on 2017/9/13.

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gzticc.hz.mapper.DepartmentMapper" >
+
+	<!-- 表与实体映射 -->
+	<resultMap id="SysMenuCustomMap" type="SysMenuCustom">
+		<id property="sysMenuId" column="sysMenuId" />
+		<result property="sysMenuNo" column="sysMenuNo" />
+		<result property="sysMenuName" column="sysMenuName" />
+		<result property="parentNo" column="parentNo" />
+		<result property="status" column="status" />
+		<result property="createPersionId" column="createPersionId" />
+		<result property="createTime" column="createTime" />
+	</resultMap>
+
+	<!-- 查询条件的sql片段 -->
+	<sql id="query_sys_menu">
+		<if test="null != sysMenuCustom">
+			<!-- ${}拼接字符串，有sql注入的维修，少用 -->
+			<if test="null != sysMenuCustom.sysMenuNo and '' != sysMenuCustom.sysMenuNo">
+				and sysMenuNo like concat('%',#{sysMenuCustom.sysMenuNo},'%')
+			</if>
+			<if test="null != sysMenuCustom.sysMenuName and '' != sysMenuCustom.sysMenuName">
+				and sysMenuName like concat('%',#{sysMenuCustom.sysMenuName},'%')
+			</if>
+		</if>
+	</sql>
+	
+	<!-- 查询 -->
+	<!-- 
+		parameterType传入包装对象(包装了查询条件)
+  		resultType建议使用扩展对象
+  	 -->
+	<select id="queryObjs" parameterType="SysMenuQueryVo" resultMap="SysMenuCustomMap">
+		SELECT tb_sys_menu.* FROM tb_sys_menu
+		<where>
+			<!-- 引用sql片段 的id,如果refid指定的id不在本mapper文件中,要前边加namespace -->
+			<include refid="query_sys_menu"></include>
+		</where>
+		order by createTime desc
+		<if test="null != start and null != rows">
+			limit #{start},#{rows}
+		</if>
+
+	</select>
+
+	<select id="queryObj" parameterType="java.lang.String" resultMap="SysMenuCustomMap">
+		SELECT tb_sys_menu.* FROM tb_sys_menu
+		<where>
+			and sysMenuId = #{pk}
+		</where>
+	</select>
+
+	<select id="queryCount" parameterType="SysMenuQueryVo" resultType="java.lang.Long">
+		SELECT count(1) FROM tb_department
+		<where>
+			<include refid="query_department"></include>
+		</where>
+	</select>
+
+	<!--添加-->
+	<insert id="insert" parameterType="SysMenuCustom">
+		insert into tb_sys_menu
+			(
+				sysMenuNo,
+				sysMenuName,
+				parentNo,
+				status,
+				createPersionId,
+				createTime
+			)
+		values
+			(
+				#{sysMenuNo},
+				#{sysMenuName},
+				#{parentNo},
+				#{status},
+				#{createPersionId},
+				#{createTime}
+			)
+	</insert>
+
+	<!-- 修改 -->
+	<update id="update" parameterType="SysMenuCustom">
+		update tb_sys_menu
+		set
+			sysMenuNo = #{sysMenuNo},
+			sysMenuName = #{sysMenuName},
+			parentNo = #{parentNo},
+			status = #{status}
+		where sysMenuId = #{sysMenuId}
+	</update>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="SysMenuCustom">
+		delete from tb_sys_menu where sysMenuId = #{sysMenuId}
+	</delete>
+
+	<!---->
+	<!-- 通过主键批量删除-->
+	<delete id="deleteList">
+		delete from tb_sys_menu where sysMenuId in
+		<foreach collection="array" open="(" close=")" separator="," item="pk">
+			#{pk}
+		</foreach>
+	</delete>
+</mapper>

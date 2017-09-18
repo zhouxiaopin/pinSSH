@@ -32,9 +32,6 @@
               </div>
 
         </div>
-        <div title="Tab3" data-options="closable:true,fit:true" style="padding:20px;display:none;">
-                tab3
-        </div>
 </div>
 <script type="text/javascript">
 //        alert($("#dataInfo").width());
@@ -45,6 +42,7 @@
         return ($("#dataInfo").width()) * percent ;
     }
     $(function () {
+
         $('#serachBtn').on('click',function () {
             $('#dg').datagrid('load',{
                 'departmentCustom.departmentNo': $('#departmentNo').val(),
@@ -109,8 +107,8 @@
                     //$.messager.alert('提示','添加按钮','info');
                     $('#dialog').dialog({
                         title: '添加',
-                        width: 600,
-                        height: 400,
+                        width: '50%',
+                        height: '70%',
                         closed: false,
                         cache: false,
                         resizable:true,
@@ -118,6 +116,14 @@
                         maximizable:true,
                         href: '${pageContext.request.contextPath}/department/initAdd.action',
                         modal: true,
+                        onBeforeClose:function () {
+
+                            $(this).panel('restore');
+                            $(this).panel('resize',{
+                                width: '50%',
+                                height: '70%',
+                            });
+                        },
                         onClose:function () {
                             $('#dg').datagrid('reload');
                         }
@@ -140,8 +146,8 @@
                     }
                     $('#dialog').dialog({
                         title: '修改',
-                        width: 600,
-                        height: 400,
+                        width: '50%',
+                        height: '70%',
                         closed: false,
                         cache: false,
                         resizable:true,
@@ -151,6 +157,14 @@
                         modal: true,
                         queryParams: {
                             'id':$("#dg").datagrid('getChecked')[0].departmentId
+                        },
+                        onBeforeClose:function () {
+
+                            $(this).panel('restore');
+                            $(this).panel('resize',{
+                                width: '50%',
+                                height: '70%',
+                            });
                         },
                         onClose:function () {
                             $('#dg').datagrid('reload');
@@ -198,8 +212,8 @@
                     }
                     $('#dialog').dialog({
                         title: '查看',
-                        width: 600,
-                        height: 400,
+                        width: '50%',
+                        height: '70%',
                         closed: false,
                         cache: false,
                         resizable:true,
@@ -209,6 +223,14 @@
                         modal: true,
                         queryParams: {
                             'id':$("#dg").datagrid('getChecked')[0].departmentId
+                        },
+                        onBeforeClose:function () {
+
+                            $(this).panel('restore');
+                            $(this).panel('resize',{
+                                width: '50%',
+                                height: '70%',
+                            });
                         },
                         onClose:function () {
                             $('#dg').datagrid('reload');

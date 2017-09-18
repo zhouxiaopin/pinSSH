@@ -1,4 +1,4 @@
-package com.gzticc.common.utils;
+package com.gzticc.common.base.utils;
 
 import com.google.gson.Gson;
 

@@ -1,9 +1,9 @@
-package com.gzticc.common.pojo;
+package com.gzticc.common.base.pojo;
 
 /**
  * Created by Administrator on 2017/9/13.
  */
-public class DatagridPage<T> {
+public class DatagridPage {
     private Integer page;//当前页
     private Integer rows;//页大小
     private Long start;//起始索引
@@ -29,7 +29,9 @@ public class DatagridPage<T> {
     }
 
     public Long getStart() {
-        this.start = Long.valueOf((page-1)*rows);
+        if(null != page && null != rows) {
+            this.start = Long.valueOf((page-1)*rows);
+        }
         return start;
     }
 

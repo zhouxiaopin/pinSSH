@@ -1,6 +1,6 @@
-package com.gzticc.common.pojo;
+package com.gzticc.common.base.pojo;
 
-import com.gzticc.common.utils.BaseConstant;
+import com.gzticc.common.base.utils.BaseConstant;
 
 /**
  * Created by Administrator on 2017/9/12.

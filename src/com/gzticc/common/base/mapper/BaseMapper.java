@@ -1,4 +1,4 @@
-package com.gzticc.common.mapper;
+package com.gzticc.common.base.mapper;
 
 import java.util.List;
 

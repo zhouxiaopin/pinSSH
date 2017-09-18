@@ -1,4 +1,4 @@
-package com.gzticc.common.utils;
+package com.gzticc.common.base.utils;
 
 /**
  * Created by Administrator on 2017/9/12.
@@ -38,7 +38,7 @@ public interface BaseConstant {
     String RECORD_EXISTS_YES_MSG = "记录已存在";
     String RECORD_EXISTS_NO_MSG = "记录不存在";
 
-    String EXCEPTION__MSG = "系统繁忙,请稍后再试";
+    String EXCEPTION_MSG = "系统繁忙,请稍后再试";
 
     /**************默认分页查询的条数****************/
     int DEFAULT_PAGE_COUNT = 10;

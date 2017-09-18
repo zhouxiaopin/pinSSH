@@ -1,10 +1,10 @@
-package com.gzticc.common.service.impl;
+package com.gzticc.common.base.service.impl;
 
-import com.gzticc.common.mapper.BaseMapper;
-import com.gzticc.common.pojo.BaseResult;
-import com.gzticc.common.pojo.DatagridResult;
-import com.gzticc.common.service.IBaseMyBatisService;
-import com.gzticc.common.utils.BaseConstant;
+import com.gzticc.common.base.mapper.BaseMapper;
+import com.gzticc.common.base.pojo.BaseResult;
+import com.gzticc.common.base.pojo.DatagridResult;
+import com.gzticc.common.base.service.IBaseMyBatisService;
+import com.gzticc.common.base.utils.BaseConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -14,10 +14,22 @@ public class BaseMyBatisServiceImpl<T,V> implements IBaseMyBatisService<T,V> {
     @Autowired
     protected BaseMapper<T,V> baseMapper;
 
+    protected BaseResult insertBefore(BaseResult baseResult,T t){
+        return baseResult;
+    }
+
+    protected BaseResult updateBefore(BaseResult baseResult,T t){
+        return baseResult;
+    }
+
     @Override
     public BaseResult insert(T entityCustom){
         BaseResult baseResult = new BaseResult();
         try {
+            baseResult = insertBefore(baseResult,entityCustom);
+            if(!baseResult.isStatus()) {
+                return baseResult;
+            }
             int flag = baseMapper.insert(entityCustom);
             if(flag >= 1) {
                 baseResult.setCode(BaseConstant.ADD_SUCCESS_CODE);
@@ -29,7 +41,7 @@ public class BaseMyBatisServiceImpl<T,V> implements IBaseMyBatisService<T,V> {
             }
         }catch (Exception e){
             baseResult.setCode(BaseConstant.EXCEPTION_CODE);
-            baseResult.setMsg(BaseConstant.EXCEPTION__MSG);
+            baseResult.setMsg(BaseConstant.EXCEPTION_MSG);
         }
 
         return baseResult;
@@ -39,6 +51,10 @@ public class BaseMyBatisServiceImpl<T,V> implements IBaseMyBatisService<T,V> {
     public BaseResult update(T entityCustom){
         BaseResult baseResult = new BaseResult();
         try {
+            baseResult = updateBefore(baseResult,entityCustom);
+            if(!baseResult.isStatus()) {
+                return baseResult;
+            }
             int flag = baseMapper.update(entityCustom);
             if(flag >= 1) {
                 baseResult.setCode(BaseConstant.MDF_SUCCESS_CODE);
@@ -50,7 +66,7 @@ public class BaseMyBatisServiceImpl<T,V> implements IBaseMyBatisService<T,V> {
             }
         }catch (Exception e){
             baseResult.setCode(BaseConstant.EXCEPTION_CODE);
-            baseResult.setMsg(BaseConstant.EXCEPTION__MSG);
+            baseResult.setMsg(BaseConstant.EXCEPTION_MSG);
         }
         return baseResult;
     }
@@ -66,7 +82,7 @@ public class BaseMyBatisServiceImpl<T,V> implements IBaseMyBatisService<T,V> {
                 baseResult = new BaseResult();
             }
             baseResult.setCode(BaseConstant.EXCEPTION_CODE);
-            baseResult.setMsg(BaseConstant.EXCEPTION__MSG);
+            baseResult.setMsg(BaseConstant.EXCEPTION_MSG);
         }
         return baseResult;
     }
@@ -82,7 +98,7 @@ public class BaseMyBatisServiceImpl<T,V> implements IBaseMyBatisService<T,V> {
                 baseResult = new BaseResult();
             }
             baseResult.setCode(BaseConstant.EXCEPTION_CODE);
-            baseResult.setMsg(BaseConstant.EXCEPTION__MSG);
+            baseResult.setMsg(BaseConstant.EXCEPTION_MSG);
         }
         return baseResult;
     }
@@ -100,7 +116,7 @@ public class BaseMyBatisServiceImpl<T,V> implements IBaseMyBatisService<T,V> {
         return dr;
     }
 
-    public BaseResult deleteAfter(int flag){
+    private BaseResult deleteAfter(int flag){
         BaseResult br = new BaseResult();
         if(flag >= 1) {
             br.setCode(BaseConstant.DEL_SUCCESS_CODE);

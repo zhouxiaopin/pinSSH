@@ -2,14 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.gzticc.hz.mapper.DepartmentMapper" >
 
+	<!-- 表与实体映射 -->
+	<resultMap id="DepartmentCustomMap" type="DepartmentCustom">
+		<id property="departmentId" column="departmentId" />
+		<result property="departmentNo" column="departmentNo" />
+		<result property="departmentName" column="departmentName" />
+		<result property="status" column="status" />
+		<result property="createTime" column="createTime" />
+	</resultMap>
+
 	<!-- 查询部门的条件的sql片段 -->
 	<sql id="query_department">
-		<if test="departmentCustom!=null">
+		<if test="null != departmentCustom">
 			<!-- ${}拼接字符串，有sql注入的维修，少用 -->
-			<if test="departmentCustom.departmentName!=null and departmentCustom.departmentName !=''">
+			<if test="null != departmentCustom.departmentName and '' != departmentCustom.departmentName">
 				and departmentName like concat('%',#{departmentCustom.departmentName},'%')
 			</if>
-			<if test="departmentCustom.departmentNo!=null and departmentCustom.departmentNo !=''">
+			<if test="null != departmentCustom.departmentNo and '' != departmentCustom.departmentNo">
 				and departmentNo like concat('%',#{departmentCustom.departmentNo},'%')
 			</if>
 		</if>
@@ -20,20 +29,20 @@
 		parameterType传入包装对象(包装了查询条件)
   		resultType建议使用扩展对象
   	 -->
-	<select id="queryObjs" parameterType="DepartmentQueryVo" resultType="DepartmentCustom">
+	<select id="queryObjs" parameterType="DepartmentQueryVo" resultMap="DepartmentCustomMap">
 		SELECT tb_department.* FROM tb_department
 		<where>
 			<!-- 引用sql片段 的id,如果refid指定的id不在本mapper文件中,要前边加namespace -->
 			<include refid="query_department"></include>
 		</where>
 		order by createTime desc
-		<if test="start!=null and rows!=null">
+		<if test="null != start and null != rows">
 			limit #{start},#{rows}
 		</if>
 
 	</select>
 
-	<select id="queryObj" parameterType="java.lang.String" resultType="DepartmentCustom">
+	<select id="queryObj" parameterType="java.lang.String" resultMap="DepartmentCustomMap">
 		SELECT tb_department.* FROM tb_department
 		<where>
 			and departmentId = #{pk}

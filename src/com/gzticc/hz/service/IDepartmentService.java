@@ -1,6 +1,6 @@
 package com.gzticc.hz.service;
 
-import com.gzticc.common.service.IBaseMyBatisService;
+import com.gzticc.common.base.service.IBaseMyBatisService;
 import com.gzticc.hz.pojo.DepartmentCustom;
 import com.gzticc.hz.pojo.DepartmentQueryVo;
 

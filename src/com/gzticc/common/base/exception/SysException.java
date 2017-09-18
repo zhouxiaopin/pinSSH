@@ -1,4 +1,4 @@
-package com.gzticc.common.exception;
+package com.gzticc.common.base.exception;
 
 /**
  * Created by Administrator on 2017/9/14.
