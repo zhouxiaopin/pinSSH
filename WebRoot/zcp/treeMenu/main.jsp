@@ -43,10 +43,6 @@
     }
     $(function () {
 
-        zcp.ajaxRequest('${pageContext.request.contextPath}/sysMenu/getComboTree.action',
-            null,function (data) {
-              alert(JSON.stringify(data));
-            });
 
         $('#serachBtn').on('click',function () {
             $('#dg').datagrid('load',{

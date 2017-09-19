@@ -5,25 +5,11 @@
     </div>
 </div>
 <script type="text/javascript">
-    $('#tt').tree({
-        data: [{
-            text: 'Item1',
-            state: 'closed',
-            children: [{
-                text: 'Item11'
-            },{
-                text: 'Item12'
-            }]
-        },{
-            text: 'Item2',
-            state: 'closed',
-            children: [{
-                text: 'Item21'
-            },{
-                text: 'Item22'
-            }]
-        }]
-    });
+    zcp.ajaxRequest('${pageContext.request.contextPath}/sysMenu/getComboTree.action',
+        null,function (data) {
+
+            $('#tt').tree({data: data});
+        });
 
 
 </script>

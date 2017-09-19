@@ -24,6 +24,9 @@
 			<if test="null != sysMenuCustom.sysMenuName and '' != sysMenuCustom.sysMenuName">
 				and sysMenuName like concat('%',#{sysMenuCustom.sysMenuName},'%')
 			</if>
+			<if test="null != sysMenuCustom.parentNo and '' != sysMenuCustom.parentNo">
+				and parentNo = #{sysMenuCustom.parentNo}
+			</if>
 		</if>
 	</sql>
 	
