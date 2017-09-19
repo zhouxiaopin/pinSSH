@@ -1,15 +1,18 @@
 package com.gzticc.common.frame.controller;
 
 import com.gzticc.common.base.controller.BaseController;
+import com.gzticc.common.base.pojo.ComboTree;
 import com.gzticc.common.frame.pojo.SysMenuCustom;
 import com.gzticc.common.frame.pojo.SysMenuQueryVo;
 import com.gzticc.common.frame.service.ISysMenuService;
-import com.gzticc.hz.pojo.DepartmentCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 系统菜单信息控制器
@@ -42,5 +45,17 @@ public class SysMenuController extends BaseController<SysMenuCustom,SysMenuQuery
 
     }
 
+    @RequestMapping(value = "/getComboTree", method = RequestMethod.POST)
+    @ResponseBody
+    public List<ComboTree> getComboTree() {
+        List<ComboTree> comboTrees = new ArrayList<>();
+        try {
+//            datagridResult = baseMyBatisService.queryObjs(v);
+            comboTrees = sysMenuService.getComboTrees("1");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return comboTrees;
+    }
 
 }

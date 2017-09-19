@@ -9,6 +9,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 配置别名 -->
 	<typeAliases>
 		<!-- 批量扫描别名 :首字母小写或大写的类名-->
+		<package name="com.gzticc.common.base.pojo"/>
+		<package name="com.gzticc.common.frame.pojo"/>
 		<package name="com.gzticc.hz.pojo"/>
 <!--		<package name="com.huazhiyu.category.pojo"/>
 		<package name="com.huazhiyu.product.pojo"/>

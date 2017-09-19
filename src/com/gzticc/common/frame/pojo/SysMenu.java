@@ -11,7 +11,8 @@ public class SysMenu {
     private String sysMenuNo;
     private String sysMenuName;
     private String parentNo;
-    private String status;
+    private String levelCode;
+    private String useStatus;
     private Long createPersionId;
     private Date createTime;
 
@@ -31,8 +32,12 @@ public class SysMenu {
         this.parentNo = parentNo;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setLevelCode(String levelCode) {
+        this.levelCode = levelCode;
+    }
+
+    public void setUseStatus(String useStatus) {
+        this.useStatus = useStatus;
     }
 
     public void setCreatePersionId(Long createPersionId) {
@@ -59,8 +64,12 @@ public class SysMenu {
         return parentNo;
     }
 
-    public String getStatus() {
-        return status;
+    public String getLevelCode() {
+        return levelCode;
+    }
+
+    public String getUseStatusStatus() {
+        return useStatus;
     }
 
     public Long getCreatePersionId() {

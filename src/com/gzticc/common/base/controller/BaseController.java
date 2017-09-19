@@ -7,7 +7,6 @@ import com.gzticc.common.base.service.IBaseMyBatisService;
 import com.gzticc.common.base.utils.BaseConstant;
 import com.gzticc.common.base.utils.GsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by Administrator on 2017/9/14.
  */
-@Controller
 public abstract class BaseController<T,V> {
     @Autowired
     private IBaseMyBatisService<T,V> baseMyBatisService;
@@ -121,7 +119,7 @@ public abstract class BaseController<T,V> {
 
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     @ResponseBody
-    public DatagridResult<T> list(V v) throws Exception{
+    public DatagridResult<T> list(V v) {
         DatagridResult<T> datagridResult;
         try {
             datagridResult = baseMyBatisService.queryObjs(v);

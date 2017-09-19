@@ -8,5 +8,4 @@ import com.gzticc.common.frame.pojo.SysMenuQueryVo;
  * Created by Administrator on 2017/9/18.
  */
 public interface SysMenuMapper extends BaseMapper<SysMenuCustom,SysMenuQueryVo> {
-
 }

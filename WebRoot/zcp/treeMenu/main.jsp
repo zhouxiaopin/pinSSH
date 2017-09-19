@@ -43,6 +43,11 @@
     }
     $(function () {
 
+        zcp.ajaxRequest('${pageContext.request.contextPath}/sysMenu/getComboTree.action',
+            null,function (data) {
+              alert(JSON.stringify(data));
+            });
+
         $('#serachBtn').on('click',function () {
             $('#dg').datagrid('load',{
                 'departmentCustom.departmentNo': $('#departmentNo').val(),
@@ -96,7 +101,10 @@
                     }
                 }
             ]],
-            onLoadSuccess: function () {
+            onLoadError: function () {
+                $.messager.alert('提示','系统繁忙,请稍后再试','error');
+            },
+            onLoadSuccess: function (data) {
                 $(this).datagrid('clearSelections');
                 $(this).datagrid('clearChecked');
             },

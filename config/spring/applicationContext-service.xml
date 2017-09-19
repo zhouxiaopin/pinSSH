@@ -3,7 +3,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd ">
 
-	<bean id="BaseMyBatisServiceImpl" class="com.gzticc.common.base.service.impl.BaseMyBatisServiceImpl" />
+	<bean id="BaseMyBatisServiceImpl" class="com.gzticc.common.base.service.impl.BaseMyBatisServiceImpl"/>
 	<bean id="DepartmentService" class="com.gzticc.hz.service.impl.DepartmentServiceImpl" parent="BaseMyBatisServiceImpl"/>
+	<bean id="SysMenuService" class="com.gzticc.common.frame.service.impl.SysMenuServiceImpl" parent="BaseMyBatisServiceImpl"/>
 
 </beans>
