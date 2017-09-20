@@ -1,7 +1,9 @@
 package com.gzticc.common.frame.tag;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
 import java.io.IOException;
 
 /**
@@ -11,22 +13,23 @@ public class DatagridTag extends BaseTag {
 
     @Override
     public void doTag() throws JspException, IOException {
-        super.doTag();
-        JspWriter out = getJspContext().getOut();
-        String element;
+        HttpServletResponse response = (HttpServletResponse)((PageContext)this.getJspContext()).getResponse();
+        //设置输出内容类型和编码
+        response.setContentType("text/html;charset=utf-8");
+
+        StringBuilder html = new StringBuilder();
         if (id != null) {
-          /* 从属性中使用消息 */
-//            out.println( message );
-            element = "<table id='"+id+"'></table>";
+//            html.append("<table id='"+id+"'></table>");
+            html.append("<table id='"+id+"' ");
         }else {
             id = "_t_"+System.nanoTime();
-            element = "<table id='"+id+"' ></table>";
-
-          /* 从内容体中使用消息 */
-            /*getJspBody().invoke(sw);*/
-
-            /*writer.println(sw.toString());*/
+//            html.append("<table id='"+id+"' ></table>");
+            html.append("<table id='"+id+"' ");
         }
-        out.print(element);
+        html.append(" >");
+        html.append("</table>");
+
+        JspWriter out = getJspContext().getOut();
+        out.print(html.toString());
     }
 }

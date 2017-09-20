@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-<%@ taglib uri="/ticc-tag" prefix="ticc" %>
+<%@ taglib uri="http://www.ticc.com" prefix="ticc" %>
 
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/ticc/common/css/jeasyui/themes/ui-cupertino/easyui.css" type="text/css" />

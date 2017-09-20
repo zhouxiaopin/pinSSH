@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="/WEB-INF/jsp/frame/common/resInclude.jsp"%>
 <div style="width:100%;min-width:1024px;height: auto;min-height: 100px;">
     <fieldset style="min-height:80px;border-color: #AED0EA;border-radius:5px;padding: 10px;display: block;">
         <legend style="margin-left: 10px">信息查询</legend>
@@ -10,10 +9,11 @@
         <a id="serachBtn" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
     </fieldset>
 </div>
+
 <div class="dataInfoArea" style="width:100%;min-width:1024px;height: auto;">
 <%--    <table id="dataInfo" class="dataInfo">
     </table>--%>
-    <ticc:datagrid id="dataInfo"></ticc:datagrid>
+    <ticc:datagrid id="dataInfo"/>
 </div>
 <script type="text/javascript">
     $(function () {
@@ -24,7 +24,6 @@
                 'departmentCustom.departmentNo': $('#departmentNo').val(),
                 'departmentCustom.departmentName': $('#departmentName').val()
             });
-
 
         });
 
@@ -44,12 +43,12 @@
             url: '${pageContext.request.contextPath}/department/list.action?time=' + new Date().getTime(),
             type: 'POST',
             title: '部门管理',
-            striped:true,//奇偶行显示不同颜色
-            rownumbers:true,//显示行号
             idField:"departmentId",
-            fitColumns : true,
-            fit : true,
 //            singleSelect : true,
+            striped: true,
+            fitColumns: true,
+            fit: true,
+            rownumbers: true,
             pagination : true,
             pageNumber : 1,
             pageSize : 10,
@@ -148,7 +147,7 @@
                 text: '查看',
                 handler: function(){
 //                    $.messager.alert('提示','查看按钮','info');
-                    var rows = $(".dataInfo").datagrid('getChecked');
+                    var rows = $("#dataInfo").datagrid('getChecked');
                     var len = rows.length;
                     if (0 >= len){
                         $.messager.alert('提示','请选择一行','info');

@@ -47,7 +47,8 @@
                                 title: node.text,
                                 selected: true,
                                 closable:true,
-                                fit:true
+                                fit:true,
+                                style:{padding:'10px'}
                             });
                         }
 

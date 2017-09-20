@@ -34,6 +34,13 @@
                             });
                         }"></div>
 
+<script type="text/javascript">
+    $(function () {
+
+    });
+
+
+</script>
 <%--<script type="text/javascript">
 //        alert($("#dataInfo").width());
 //        alert(document.body.clientWidth);

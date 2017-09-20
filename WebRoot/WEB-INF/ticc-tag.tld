@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
     <description>"ticc-tag"</description>
     <display-name>"ticc tag"</display-name>
+    <!-- 标签库的版本 -->
     <tlib-version>1.0</tlib-version>
+    <!-- 标签库前缀 -->
     <short-name>ticc</short-name>
-    <uri>/ticc-tag</uri>
+    <!-- tld文件的唯一标记 -->
+    <uri>http://www.ticc.com</uri>
+    <!-- 一个标签的声明 -->
     <tag>
+        <!-- 标签名称 -->
         <name>datagrid</name>
+        <!-- 标签处理器类的全名 -->
         <tag-class>com.gzticc.common.frame.tag.DatagridTag</tag-class>
-        <body-content>JSP</body-content>
+        <!-- 输出标签体内容格式 -->
+        <body-content>scriptless</body-content>
+        <!-- 属性声明 -->
         <attribute>
             <name>id</name>
+            <!-- 是否必填 -->
+            <required>false</required>
+            <!-- 是否支持EL表达式 -->
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <!--标签声明结束-->
 </taglib>
