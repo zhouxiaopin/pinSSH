@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -47,11 +48,12 @@ public class SysMenuController extends BaseController<SysMenuCustom,SysMenuQuery
 
     @RequestMapping(value = "/getComboTree", method = RequestMethod.POST)
     @ResponseBody
-    public List<ComboTree> getComboTree() {
+    public List<ComboTree> getComboTree(@RequestParam("levelCode") String levelCode,
+                                        @RequestParam("isGetSubTree") boolean isGetSubTree) {
         List<ComboTree> comboTrees = new ArrayList<>();
         try {
 //            datagridResult = baseMyBatisService.queryObjs(v);
-            comboTrees = sysMenuService.getComboTrees("1");
+            comboTrees = sysMenuService.getComboTrees(levelCode,isGetSubTree);
         }catch (Exception e){
             e.printStackTrace();
         }

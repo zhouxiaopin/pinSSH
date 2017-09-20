@@ -7,6 +7,7 @@
 		<id property="sysMenuId" column="sysMenuId" />
 		<result property="sysMenuNo" column="sysMenuNo" />
 		<result property="sysMenuName" column="sysMenuName" />
+		<result property="url" column="url" />
 		<result property="parentNo" column="parentNo" />
 		<result property="levelCode" column="levelCode" />
 		<result property="useStatus" column="useStatus" />
@@ -23,6 +24,9 @@
 			</if>
 			<if test="null != sysMenuCustom.sysMenuName and '' != sysMenuCustom.sysMenuName">
 				and sysMenuName like concat('%',#{sysMenuCustom.sysMenuName},'%')
+			</if>
+			<if test="null != sysMenuCustom.levelCode and '' != sysMenuCustom.levelCode">
+				and levelCode = #{sysMenuCustom.levelCode}
 			</if>
 			<if test="null != sysMenuCustom.parentNo and '' != sysMenuCustom.parentNo">
 				and parentNo = #{sysMenuCustom.parentNo}
@@ -68,6 +72,7 @@
 			(
 				sysMenuNo,
 				sysMenuName,
+				url,
 				parentNo,
 				levelCode,
 				status,
@@ -78,6 +83,7 @@
 			(
 				#{sysMenuNo},
 				#{sysMenuName},
+				#{url},
 				#{parentNo},
 				#{levelCode},
 				#{status},
@@ -92,6 +98,7 @@
 		set
 			sysMenuNo = #{sysMenuNo},
 			sysMenuName = #{sysMenuName},
+			url = #{url},
 			parentNo = #{parentNo},
 			levelCode = #{levelCode},
 			status = #{status}

@@ -26,6 +26,11 @@ public abstract class BaseController<T,V> {
     protected abstract void updateOprt(T t,T param);
 
 
+    @RequestMapping(value = "/initQuery", method = RequestMethod.POST)
+    public String initQuery(Model model){
+        model.addAttribute("oprt","query");
+        return getJsp();
+    }
     @RequestMapping(value = "/initAdd", method = RequestMethod.POST)
     public String initAdd(Model model){
         try {

@@ -14,7 +14,7 @@
 
         /*#error{background-image:url(../images/error.png);width:430px;height:240px;text-align:left;}*/
         #error{
-            background-image:url(${pageContext.request.contextPath}/zcp/common/images/error.png);
+            background-image:url(${pageContext.request.contextPath}/ticc/common/images/error.png);
             width:430px;
             height:240px;
             margin: 150px auto;

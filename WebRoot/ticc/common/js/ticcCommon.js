@@ -1,7 +1,17 @@
 /**
  * Created by Administrator on 2017/9/15.
  */
-window.zcp = {
+window.ticc = {
+    /**
+     * ajax请求
+     * @param path  请求路径
+     * @param data   参数
+     * @param success   请求成功回调函数
+     * @param ptype     请求方式
+     * @param error     请求失败回调函数
+     * @param timeout   请求超时时间
+     * @param async      是否是异步请求
+     */
     ajaxRequest: function (path, data, success, ptype, error, timeout, async) {
 
         if (!ptype || ptype.toLowerCase() != "get"){
@@ -49,5 +59,14 @@ window.zcp = {
         if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
             return "IE";
         }
+    },
+    /**
+     *
+     * @param element 元素
+     * @param percent   百分比
+     * @returns {number}
+     */
+    getFixWidth: function(element,percent){
+        return ($(element).width()) * percent ;
     }
 }

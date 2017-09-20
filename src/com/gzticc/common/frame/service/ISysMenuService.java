@@ -13,5 +13,5 @@ import java.util.List;
  *
  */
 public interface ISysMenuService extends IBaseMyBatisService<SysMenuCustom,SysMenuQueryVo> {
-    List<ComboTree> getComboTrees(String levelCode);
+    List<ComboTree> getComboTrees(String levelCode, boolean isGetSubTree);
 }

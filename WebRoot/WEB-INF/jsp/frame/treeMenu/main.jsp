@@ -1,19 +1,9 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<style type="text/css">
-</style>
-<div class="easyui-tabs" data-options="border:false" style="width:100%;height:100%;">
+<div id="mainTabs" class="easyui-tabs" data-options="border:false" style="width:100%;height:100%;">
         <div title="我的桌面" style="display:none;background: #FFffff;">
-                <jsp:include page="../common/jsp/myDesktop.jsp" flush="true"/>
+                <%--<jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/frame/common/myDesktop.jsp" flush="true"/>--%>
         </div>
-        <div title="部门管理" data-options="closable:true,fit:true" style="padding:5px;">
-      <%--          <div id="baseDiv">
-                        <div id="div1">基本信息</div>
-                        <span>IP:</span>
-                        <input type="text" disabled="disabled" value=<%=request.getAttribute("ip")%>>
-                        <span>本次历时:</span>
-                        <input type="text" disabled="disabled" value=<%=request.getAttribute("duration")%>>
-                </div>--%>
+       <%-- <div title="部门管理" data-options="closable:true,fit:true" style="padding:5px;">
               <div style="width:100%;min-width:1024px;height: auto;min-height: 100px;">
                       <fieldset style="min-height:80px;border-color: #AED0EA;border-radius:5px;padding: 10px;display: block;">
                               <legend style="margin-left: 10px">信息查询</legend>
@@ -21,19 +11,30 @@
                               部门名称:&nbsp;<input id="departmentName" class="easyui-textbox" />
 
 
-                              <a id="serachBtn" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+                              <a id="serachBtn" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
                       </fieldset>
               </div>
               <div id="dataInfo" style="width:100%;min-width:1024px;height: auto;">
                       <div id="dialog"></div>
-                      <table id="dg" >
+                      <table id="dg">
                       </table>
 
               </div>
 
-        </div>
+        </div>--%>
 </div>
-<script type="text/javascript">
+<%--通用对话框--%>
+<div class="dialog" data-options="width: '50%',height: '70%',closed: false,cache: false,
+                resizable:true,method:'POST',maximizable:true,modal: true,
+                        onBeforeClose:function () {
+                            $(this).panel('restore');
+                            $(this).panel('resize',{
+                                width: '50%',
+                                height: '70%',
+                            });
+                        }"></div>
+
+<%--<script type="text/javascript">
 //        alert($("#dataInfo").width());
 //        alert(document.body.clientWidth);
 
@@ -246,4 +247,4 @@
     });
 
 
-</script>
+</script>--%>

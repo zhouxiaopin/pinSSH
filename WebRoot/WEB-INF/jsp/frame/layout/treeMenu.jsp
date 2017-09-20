@@ -3,14 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <%@ include file="../common/jsp/resInclude.jsp"%>
+    <%@ include file="/WEB-INF/jsp/frame/common/resInclude.jsp"%>
     <title>营运后台管理系统</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="营运后台管理系统">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/zcp/common/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/ticc/common/css/style.css" type="text/css" />
     <style rel="stylesheet" type="text/css">
         #container {width: 100%;height: 100%;}
     </style>

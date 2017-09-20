@@ -28,10 +28,11 @@ public class SysMenuServiceImpl extends BaseMyBatisServiceImpl<SysMenuCustom,Sys
 
 
 	@Override
-	public List<ComboTree> getComboTrees(String levelCode) {
+	public List<ComboTree> getComboTrees(String levelCode,boolean isGetSubTree) {
 		List<ComboTree> comboTrees = new ArrayList<>();
+
 		SysMenuCustom sysMenuCustom = new SysMenuCustom();
-		sysMenuCustom.setLevelCode("1");
+		sysMenuCustom.setLevelCode(levelCode);
 
 		SysMenuQueryVo sysMenuQueryVo = new SysMenuQueryVo();
 		sysMenuQueryVo.setSysMenuCustom(sysMenuCustom);
@@ -39,12 +40,24 @@ public class SysMenuServiceImpl extends BaseMyBatisServiceImpl<SysMenuCustom,Sys
 		List<SysMenuCustom> sysMenuCustoms = sysMenuMapper.queryObjs(sysMenuQueryVo);
 
 		if(BaseUtils.colleHasData(sysMenuCustoms)) {
-			SysMenuCustom topMenu = sysMenuCustoms.get(0);
-			ComboTree comboTree = new ComboTree();
-			comboTree.setId(topMenu.getSysMenuNo());
-			comboTree.setText(topMenu.getSysMenuName());
-			comboTree.setChildren(getSubTree(topMenu.getSysMenuNo()));
-			comboTrees.add(comboTree);
+			SysMenuCustom topMenu;
+			ComboTree comboTree;
+			for (int i=0, len = sysMenuCustoms.size(); i<len; i++){
+				topMenu = sysMenuCustoms.get(i);
+				comboTree = new ComboTree();
+				comboTree.setId(topMenu.getSysMenuNo());
+				comboTree.setText(topMenu.getSysMenuName());
+				if(isGetSubTree) {
+					List<ComboTree> subTrees = getSubTree(topMenu.getSysMenuNo());
+					if(BaseUtils.colleHasData(subTrees)){
+						comboTree.setState("closed");
+					}else{
+						comboTree.putAttribute("url",topMenu.getUrl());
+					}
+					comboTree.setChildren(subTrees);
+				}
+				comboTrees.add(comboTree);
+			}
 		}
 
 		return comboTrees;
@@ -64,10 +77,17 @@ public class SysMenuServiceImpl extends BaseMyBatisServiceImpl<SysMenuCustom,Sys
 			ComboTree comboTree;
 			for (int i=0, len = sysMenuCustoms.size(); i<len; i++){
 				smc = sysMenuCustoms.get(i);
+
 				comboTree = new ComboTree();
 				comboTree.setId(smc.getSysMenuNo());
 				comboTree.setText(smc.getSysMenuName());
-				comboTree.setChildren(getSubTree(smc.getSysMenuNo()));
+				List<ComboTree> subTrees = getSubTree(smc.getSysMenuNo());
+				if(BaseUtils.colleHasData(subTrees)){
+					comboTree.setState("closed");
+				}else{
+					comboTree.putAttribute("url",smc.getUrl());
+				}
+				comboTree.setChildren(subTrees);
 				comboTrees.add(comboTree);
 			}
 		}

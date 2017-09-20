@@ -1,7 +1,9 @@
 package com.gzticc.common.base.pojo;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * jquery easy ui 树形下拉实体类
@@ -22,43 +24,70 @@ public class ComboTree {
 	private String state;
 	private String checked;
 	private String iconCls;
+	private Map<String, Object> attributes = new HashMap<>(); // 添加到节点的自定义属性
 	private List<ComboTree> children;
-	public String getId() {
-		return id;
-	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getText() {
-		return text;
-	}
+
 	public void setText(String text) {
 		this.text = text;
 	}
-	public String getState() {
-		return state;
-	}
+
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getChecked() {
-		return checked;
-	}
+
 	public void setChecked(String checked) {
 		this.checked = checked;
 	}
-	public String getIconCls() {
-		return iconCls;
-	}
+
 	public void setIconCls(String iconCls) {
 		this.iconCls = iconCls;
 	}
-	public List<ComboTree> getChildren() {
-		return children;
+
+	public void setAttributes(Map<String, Object> attributes) {
+		this.attributes = attributes;
 	}
+
 	public void setChildren(List<ComboTree> children) {
 		this.children = children;
 	}
 
+	public String getId() {
+		return id;
+	}
 
+	public String getText() {
+		return text;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public String getChecked() {
+		return checked;
+	}
+
+	public String getIconCls() {
+		return iconCls;
+	}
+
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+
+	public List<ComboTree> getChildren() {
+		return children;
+	}
+
+	public Object removeAttribute(String key){
+		return attributes.remove(key);
+	}
+
+	public Object putAttribute(String key, Object value){
+		return attributes.put(key, value);
+	}
 }

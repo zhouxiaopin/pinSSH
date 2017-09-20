@@ -6,7 +6,7 @@
         width:auto;
     }
     .header-bg{
-        background:url("${pageContext.request.contextPath}/zcp/common/images/header_top_v.jpg");
+        background:url("${pageContext.request.contextPath}/ticc/common/images/header_top_v.jpg");
         filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
         -moz-background-size:100% 100%;
         background-size:100% 100%;
@@ -45,7 +45,7 @@
         padding-left:12px;
     }
     .header-feige{
-        background:url(${pageContext.request.contextPath}/zcp/common/images/header_feige.png) no-repeat scroll center center;
+        background:url(${pageContext.request.contextPath}/ticc/common/images/header_feige.png) no-repeat scroll center center;
         width:2px;
         height:12px;
     }
@@ -53,7 +53,7 @@
         margin-top:14px;
         width:303px;
         height:28px;
-        background:url(${pageContext.request.contextPath}/zcp/common/images/member_logo.png) center no-repeat;
+        background:url(${pageContext.request.contextPath}/ticc/common/images/member_logo.png) center no-repeat;
         background-size:100% 100%;
         color:#fdd7ae;
         /*padding-right:6px;*/
@@ -90,7 +90,7 @@
     }
 </style>
 <div class="header header-bg">
-    <div class="header-logo"><img src="${pageContext.request.contextPath}/zcp/common/images/logo.png"/></div>
+    <div class="header-logo"><img src="${pageContext.request.contextPath}/ticc/common/images/logo.png"/></div>
     <div class="header-right">
         <div class="header-rigth-fa">
             <a href="#" target="_self" onclick="window.external.AddFavorite(location.href, document.title);" class="header-right-fa-a" style="padding-left:0px">收藏本站</a> <i class="header-feige">&nbsp;&nbsp;&nbsp;</i>
@@ -102,7 +102,7 @@
             <a href="${pageContext.request.contextPath}/loginAction!logout.action" target="_self" class="header-right-fa-a">退出</a>
         </div>
         <div class="header-right-wel">
-            <div class="header-right-wel-img"><img src="${pageContext.request.contextPath}/zcp/common/images/touxiang.png"/></div>
+            <div class="header-right-wel-img"><img src="${pageContext.request.contextPath}/ticc/common/images/touxiang.png"/></div>
 
             <div class="header-right-wel-i">${_sysUser_.userNo}</div>
             <div class="header-right-wel-ir">欢迎来到本系统！.当前版本:V1.0.0</div>

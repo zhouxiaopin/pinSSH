@@ -10,6 +10,7 @@ public class SysMenu {
     private Long sysMenuId;
     private String sysMenuNo;
     private String sysMenuName;
+    private String url;
     private String parentNo;
     private String levelCode;
     private String useStatus;
@@ -26,6 +27,10 @@ public class SysMenu {
 
     public void setSysMenuName(String sysMenuName) {
         this.sysMenuName = sysMenuName;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void setParentNo(String parentNo) {
@@ -60,6 +65,10 @@ public class SysMenu {
         return sysMenuName;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     public String getParentNo() {
         return parentNo;
     }
@@ -68,7 +77,7 @@ public class SysMenu {
         return levelCode;
     }
 
-    public String getUseStatusStatus() {
+    public String getUseStatus() {
         return useStatus;
     }
 
