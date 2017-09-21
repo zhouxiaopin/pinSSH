@@ -1,5 +1,6 @@
 package com.gzticc.common.frame.tag;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.StringWriter;
 
@@ -34,5 +35,13 @@ public class BaseTag extends SimpleTagSupport {
 
     public String getClazz() {
         return clazz;
+    }
+
+    protected String getBasePath(HttpServletRequest request) {
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":"
+                + request.getServerPort() + path + "/";
+
+        return basePath;
     }
 }

@@ -29,7 +29,7 @@ label{cursor:pointer;}
 }*/
 
 .footer{
-    background:url(../images/foot.jpg) repeat-x;
+    /*background:url(../images/foot.jpg) repeat-x;*/
     color: #222;
     font-size: 12px;
     height: 30px;

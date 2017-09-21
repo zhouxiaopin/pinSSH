@@ -27,6 +27,13 @@
             <!-- 是否支持EL表达式 -->
             <rtexprvalue>true</rtexprvalue>
         </attribute>
+        <attribute>
+            <name>columns</name>
+            <!-- 是否必填 -->
+            <required>true</required>
+            <!-- 是否支持EL表达式 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
     <!--标签声明结束-->
 </taglib>

@@ -41,14 +41,14 @@
                                 return;
                             }
                             $mainTabs.tabs('add',{
-//                                href:node.attributes.url,
+                                <%--href:'${pageContext.request.contextPath}/'+node.attributes.url,--%>
                                 href:'${pageContext.request.contextPath}/department/initQuery.action',
                                 method:'post',
                                 title: node.text,
                                 selected: true,
                                 closable:true,
                                 fit:true,
-                                style:{padding:'10px'}
+                                style:{padding:'5px'}
                             });
                         }
 

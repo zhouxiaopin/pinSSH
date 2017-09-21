@@ -28,7 +28,7 @@ public class SysMenuController extends BaseController<SysMenuCustom,SysMenuQuery
 
     @Override
     protected String getJsp() {
-        return "";
+        return "/sysMenu";
     }
 
     @Override
