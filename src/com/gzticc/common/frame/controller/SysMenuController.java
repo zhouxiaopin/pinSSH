@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +39,8 @@ public class SysMenuController extends BaseController<SysMenuCustom,SysMenuQuery
 
     @Override
     protected void addOprt(SysMenuCustom sysMenuCustom) {
-
+        sysMenuCustom.setCreatePersionId(123L);
+        sysMenuCustom.setCreateTime(new Date());
     }
 
     @Override

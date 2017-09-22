@@ -31,6 +31,9 @@
 			<if test="null != sysMenuCustom.parentNo and '' != sysMenuCustom.parentNo">
 				and parentNo = #{sysMenuCustom.parentNo}
 			</if>
+			<if test="null != sysMenuCustom.useStatus and '' != sysMenuCustom.useStatus">
+				and useStatus = #{sysMenuCustom.useStatus}
+			</if>
 		</if>
 	</sql>
 	
@@ -60,7 +63,7 @@
 	</select>
 
 	<select id="queryCount" parameterType="SysMenuQueryVo" resultType="java.lang.Long">
-		SELECT count(1) FROM tb_department
+		SELECT count(1) FROM tb_sys_menu
 		<where>
 			<include refid="query_sys_menu"></include>
 		</where>
@@ -75,7 +78,7 @@
 				url,
 				parentNo,
 				levelCode,
-				status,
+				useStatus,
 				createPersionId,
 				createTime
 			)
@@ -86,7 +89,7 @@
 				#{url},
 				#{parentNo},
 				#{levelCode},
-				#{status},
+				#{useStatus},
 				#{createPersionId},
 				#{createTime}
 			)
@@ -101,7 +104,7 @@
 			url = #{url},
 			parentNo = #{parentNo},
 			levelCode = #{levelCode},
-			status = #{status}
+			useStatus = #{useStatus}
 		where sysMenuId = #{sysMenuId}
 	</update>
 

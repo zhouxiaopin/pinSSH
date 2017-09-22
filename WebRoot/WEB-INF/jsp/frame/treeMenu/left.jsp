@@ -26,6 +26,12 @@
 //                        alert(JSON.stringify(node));
                         if($(this).tree('isLeaf',node.target)){
 
+                            var url = node.attributes.url;
+                            if (!url){
+                                $.messager.alert('提示','请先配置请求url','info');
+                                return;
+                            }
+
                             var $mainTabs = $('#mainTabs');
                             var len = $mainTabs.tabs('tabs').length;
                             /*判断tab数量*/
@@ -40,9 +46,10 @@
                                 $mainTabs.tabs('select',node.text);
                                 return;
                             }
+
                             $mainTabs.tabs('add',{
-                                <%--href:'${pageContext.request.contextPath}/'+node.attributes.url,--%>
-                                href:'${pageContext.request.contextPath}/department/initQuery.action',
+                                href:'${pageContext.request.contextPath}'+node.attributes.url,
+                                <%--href:'${pageContext.request.contextPath}/department/initQuery.action',--%>
                                 method:'post',
                                 title: node.text,
                                 selected: true,

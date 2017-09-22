@@ -28,10 +28,28 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <name>columns</name>
-            <!-- 是否必填 -->
+            <name>controRequestPath</name>
             <required>true</required>
-            <!-- 是否支持EL表达式 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>dgTitle</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>idField</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>columns</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>searchParams</name>
+            <required>false</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>

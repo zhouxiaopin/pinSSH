@@ -2,7 +2,7 @@
  * Created by Administrator on 2017/9/21.
  */
 window.ticcFrame = {
-    intiDatagrid: function (title,elementId,controllerRequestPath,idField,columns) {
+    intiDatagrid: function (title,elementId,controllerRequestPath,idField,columns,toolbar) {
         $(elementId).datagrid({
             url: controllerRequestPath+'/list.action?time=' + new Date().getTime(),
             type: 'POST',
@@ -25,11 +25,11 @@ window.ticcFrame = {
                 $(this).datagrid('clearSelections');
                 $(this).datagrid('clearChecked');
             },
-            toolbar: [{
+            toolbar:toolbar
+           /* toolbar: [{
                 iconCls: 'icon-add',
                 text: '添加',
                 handler: function(){
-                    //$.messager.alert('提示','添加按钮','info');
                     $('.dialog').dialog({
                         title: '添加',
                         href: controllerRequestPath+'/initAdd.action',
@@ -43,14 +43,7 @@ window.ticcFrame = {
                 iconCls: 'icon-edit',
                 text: '修改',
                 handler: function(){
-//                    $.messager.alert('提示','修改按钮','info');
-                    var rows = $(elementId).datagrid('getChecked');
-                    var len = rows.length;
-                    if (0 >= len){
-                        $.messager.alert('提示','请选择一行','info');
-                        return;
-                    }else if(2 <= len){
-                        $.messager.alert('提示','只能选择一行','info');
+                    if (!ticcFrame.datagridCheckOne(elementId)){
                         return;
                     }
                     $('.dialog').dialog({
@@ -92,13 +85,7 @@ window.ticcFrame = {
                 text: '查看',
                 handler: function(){
 //                    $.messager.alert('提示','查看按钮','info');
-                    var rows = $(elementId).datagrid('getChecked');
-                    var len = rows.length;
-                    if (0 >= len){
-                        $.messager.alert('提示','请选择一行','info');
-                        return;
-                    }else if(2 <= len){
-                        $.messager.alert('提示','只能选择一行','info');
+                    if (!ticcFrame.datagridCheckOne(elementId)){
                         return;
                     }
                     $('.dialog').dialog({
@@ -110,7 +97,19 @@ window.ticcFrame = {
                         }
                     });
                 }
-            }]
+            }]*/
         });
+    },
+    datagridCheckOne: function (elementId) {
+        var rows = $(elementId).datagrid('getChecked');
+        var len = rows.length;
+        if (0 >= len){
+            $.messager.alert('提示','请选择一行','info');
+            return false;
+        }else if(2 <= len){
+            $.messager.alert('提示','只能选择一行','info');
+            return false;
+        }
+        return true;
     }
 };

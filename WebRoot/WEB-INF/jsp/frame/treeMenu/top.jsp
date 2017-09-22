@@ -10,14 +10,14 @@
         filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
         -moz-background-size:100% 100%;
         background-size:100% 100%;
-        *background-color:#E37F1F;
-        *background: -webkit-gradient(linear, 0 0, 0 100%, from(#F2A70E), to(#E37F1F));
-        *background: -webkit-linear-gradient(left, #F2A70E, #E37F1F);
-        *background: -moz-linear-gradient(left, #F2A70E, #E37F1F);
-        *background: -o-linear-gradient(left, #F2A70E, #E37F1F);
-        *background: -ms-linear-gradient(left, #F2A70E, #E37F1F);
-        *background: linear-gradient(left, #F2A70E, #E37F1F);
-        filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = #F2A70E, endColorstr = #E37F1F);
+        *background-color:#F2F5F7;
+        *background: -webkit-gradient(linear, 0 0, 0 100%, from(#F2F5F7), to(#F2F5F7));
+        *background: -webkit-linear-gradient(left, #F2F5F7, #F2F5F7);
+        *background: -moz-linear-gradient(left, #F2F5F7, #F2F5F7);
+        *background: -o-linear-gradient(left, #F2F5F7, #F2F5F7);
+        *background: -ms-linear-gradient(left, #F2F5F7, #F2F5F7);
+        *background: linear-gradient(left, #F2F5F7, #F2F5F7);
+        filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = #F2F5F7, endColorstr = #F2F5F7);
 
     }
     .header-logo{
@@ -27,7 +27,7 @@
         width:20%
     }
     .header-right{
-        color:#fafafa;
+        color:#2779AA;
         padding-top:14px;
         padding-right:20px;
         float:right;
@@ -40,7 +40,7 @@
         text-align:left;
     }
     .header-right-fa-a{
-        color:#fafafa;
+        color:#FFFFFF;
         padding-right:12px;
         padding-left:12px;
     }
@@ -55,7 +55,7 @@
         height:28px;
         background:url(${pageContext.request.contextPath}/ticc/common/images/member_logo.png) center no-repeat;
         background-size:100% 100%;
-        color:#fdd7ae;
+        color:#2779AA;
         /*padding-right:6px;*/
         /*float:right;*/
         text-align:left;
@@ -69,7 +69,7 @@
     }
     .header-right-wel-i{
         padding-top:0px;
-        color:#fefefe;
+        color:#2779AA;
         line-height:28px;
         vertical-align:top;
         float:left;
@@ -77,7 +77,7 @@
     }
     .header-right-wel-ir{
         padding-top:0px;
-        color:#fdd7ae;
+        color:#2779AA;
         line-height:28px;
         vertical-align:top;
         float:right;
@@ -85,7 +85,7 @@
     }
     .header-right-wel-ad {
         padding-left:11px;
-        color:#fefefe
+        color:#2779AA
 
     }
 </style>

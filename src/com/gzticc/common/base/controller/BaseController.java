@@ -29,6 +29,8 @@ public abstract class BaseController<T,V> {
     @RequestMapping(value = "/initQuery", method = RequestMethod.POST)
     public String initQuery(Model model){
         model.addAttribute("oprt","query");
+        //重定向到list
+//        return "redirect:list.action";
         return getJsp();
     }
     @RequestMapping(value = "/initAdd", method = RequestMethod.POST)

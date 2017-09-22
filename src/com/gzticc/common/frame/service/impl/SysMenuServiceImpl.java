@@ -5,6 +5,7 @@ package com.gzticc.common.frame.service.impl;
 import com.gzticc.common.base.pojo.ComboTree;
 import com.gzticc.common.base.service.impl.BaseMyBatisServiceImpl;
 import com.gzticc.common.base.utils.BaseUtils;
+import com.gzticc.common.frame.constant.Constant;
 import com.gzticc.common.frame.mapper.SysMenuMapper;
 import com.gzticc.common.frame.pojo.SysMenuCustom;
 import com.gzticc.common.frame.pojo.SysMenuQueryVo;
@@ -33,6 +34,7 @@ public class SysMenuServiceImpl extends BaseMyBatisServiceImpl<SysMenuCustom,Sys
 
 		SysMenuCustom sysMenuCustom = new SysMenuCustom();
 		sysMenuCustom.setLevelCode(levelCode);
+		sysMenuCustom.setUseStatus(Constant.SYS_MENU_USESTATUS_OK);
 
 		SysMenuQueryVo sysMenuQueryVo = new SysMenuQueryVo();
 		sysMenuQueryVo.setSysMenuCustom(sysMenuCustom);
@@ -67,6 +69,7 @@ public class SysMenuServiceImpl extends BaseMyBatisServiceImpl<SysMenuCustom,Sys
 		List<ComboTree> comboTrees = new ArrayList<>();
 		SysMenuCustom sysMenuCustom = new SysMenuCustom();
 		sysMenuCustom.setParentNo(parentNo);
+		sysMenuCustom.setUseStatus(Constant.SYS_MENU_USESTATUS_OK);
 
 		SysMenuQueryVo sysMenuQueryVo = new SysMenuQueryVo();
 		sysMenuQueryVo.setSysMenuCustom(sysMenuCustom);
